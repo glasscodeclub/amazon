@@ -8,7 +8,7 @@ router.get("/", function(req,res){
             console.log("error");
         }
         else{
-            res.render("home",{data:products});
+            res.render("./pages/home",{data:products});
         }
     })
     )
