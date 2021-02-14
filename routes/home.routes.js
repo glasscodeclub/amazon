@@ -1,12 +1,17 @@
 var express = require("express");
 var router = express.Router();
-var middlewares = require("../middlewares/auth");
+var Product = require("../models/product");
 
-router.get("/",function(req,res){
-    res.redirect("/home");
+router.get("/", function(req,res){
+    Product.find({},(function(err,products){
+        if(err){
+            console.log("error");
+        }
+        else{
+            res.render("home",{data:products});
+        }
+    })
+    )
 });
 
-router.get("/home",middlewares.isLoggedIn, function(req, res){
-    res.render("home");
-});
 module.exports = router;
