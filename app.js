@@ -6,7 +6,7 @@ var express                 = require("express"),
     LocalStrategy           = require("passport-local"),
     passportLocalMongoose   = require("passport-local-mongoose"),
     homeroutes              = require("./routes/home.routes"),
-    authroutes              = require("./routes/auth.routes") 
+    authroutes              = require("./routes/auth.routes")
     
 var app = express();
 
@@ -34,8 +34,11 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.use(homeroutes);
-app.use(authroutes);
+app.get("/", function(req, res){
+    res.redirect("/home");
+})
+app.use("/home", homeroutes);
+app.use("/auth", authroutes);
 
 app.listen(3001, function(){
     console.log("connect!");
