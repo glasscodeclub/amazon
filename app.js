@@ -37,6 +37,6 @@ passport.deserializeUser(User.deserializeUser());
 app.use(homeroutes);
 app.use(authroutes);
 
-app.listen(3000, function(){
+app.listen(3001, function(){
     console.log("connect!");
 });

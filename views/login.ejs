@@ -1,36 +1,79 @@
 <!-- BOOTSTRAP LINK -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+<!-- Owl-Carousel -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+integrity="sha256-UhQQ4fxEeABh4JrcmAJ1+16id/1dnlOEVCFOxDef9Lw=" crossorigin="anonymous" />
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+integrity="sha256-kksNxjDRxd/5+jGurZUJd1sdR2v+ClrCl3svESBaJqw=" crossorigin="anonymous" />
+
+<!-- FONT AWESOME CDN -->
+<script src="https://kit.fontawesome.com/3bb9d2c9bc.js" crossorigin="anonymous"></script>
+
+<!-- CSS -->
 <link rel="stylesheet" href="../public/css/login.css" type="text/css">
 
-<div class="text-center">
-<div class="login-form">
-
-
-<form method="POST" action="/login">
-    <h1>Log in</h1>
-    <div class="form-group">
-    <input type="text"  class="form-control" name="username" placeholder="Username">
+<div class="outer-box">
+<div class="container-box">
+    <div class="panel-box">
+        <div class="row-css">
+            <div class="col-css liquid">
+                <h4><a class="text-white" href="/home"><i class="fas fa-home"></a></i></h4>
+                
+                <!-- Owl-Carousel -->
+                <div class="owl-carousel owl-theme">
+                    <img src="../public/img/login-authentication.svg" alt="login-authentication" class="login_img">
+                    <img src="../public/img/login-cart.svg" alt="login-cart" class="login_img">
+                    <img src="../public/img/login-secure_login.svg" alt="login-secure_login" class="login_img">
+                </div>
+                <!-- /Owl-Carousel -->
+            </div>
+            <div class="col-css login">
+                <button type="button" class="btn-css btn-signup btn btn-primary btn-block rounded-pill"><a class="text-white" href="/">Sign Up</a></button>
+                <form method="POST" action="/login">
+                    <div class="titles">
+                    <h2>Ready to Log-in</h2>
+                    </div>
+                    <div class="form-group-css">
+                    <input type="text"  class="form-input" name="username" placeholder="Username">
+                    <div class="input-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    </div>
+                    <div class="form-group-css">
+                    <input type="password"  class="form-input" name="password" placeholder="Password">
+                    <div class="input-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    </div>    
+                    <button type="submit" class=" btn-css btn-login btn btn-primary btn-block rounded-pill" > Log in </button>
+                    <div class="clearflix-box">
+                        <label class="form-check-label"><input type="checkbox"> Remember me</label>
+                        <a href="#" class="">Forgot Password?</a>
+                    </div>  
+                </form>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-    <input type="password"  class="form-control" name="password" placeholder="Password">
-    </div>
-    <div class="form-group">
-    <button class="btn btn-primary btn-block" > Login </button>
-    </div>
-    <div class="clearfix">
-        <label class="float-left form-check-label"><input type="checkbox"> Remember me</label>
-        <a href="#" class="float-right">Forgot Password?</a>
-    </div>      
-</form>
 </div>
 
-
-<li class="btn btn-link btn-outline-primary"><a href="/home">Home</a></li>
-<li class="btn btn-link btn-outline-primary" ><a href="/">Sign Up</a></li>
-<li class="btn btn-link btn-outline-primary"><a href="/logout">Logout!</a></li>
-<li class="btn btn-link btn-outline-primary"><a href="/login">Login!</a></li>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+integrity="sha256-pTxD+DSzIwmwhOqTFN+DB+nHjO4iAsbgfyFq5K5bcE0=" crossorigin="anonymous"></script>
 </div>
+<script>
+    $(document).ready(function () {
+
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            autoplay: true,
+            autoplayTimeout: 2000,
+            autoplayHoverPause: true,
+            items: 1
+        });
+    });
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-<script src="../public/js/signup.js" ></script>
+<script src="../public/js/login.js" ></script>
