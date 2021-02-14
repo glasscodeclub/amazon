@@ -9,8 +9,8 @@ var express                 = require("express"),
     authroutes              = require("./routes/auth.routes")
     
 var app = express();
-
-mongoose.connect("mongodb://localhost/chatdb", {
+var port=4000;
+mongoose.connect("mongodb://localhost/amazondb", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
@@ -35,11 +35,11 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.get("/", function(req, res){
-    res.redirect("/home");
+    res.redirect("/auth/signup");
 })
 app.use("/home", homeroutes);
 app.use("/auth", authroutes);
 
-app.listen(3001, function(){
-    console.log("connect!");
+app.listen(port, function(){
+    console.log("connected to port : ",port);
 });
