@@ -25,6 +25,11 @@ app.use(require("express-session")({
     saveUninitialized: false
 }));
 
+app.use(function(req,res,next){
+    res.locals.currentUser = req.user;
+    next();
+});
+
 app.set('view engine','ejs');
 //
 app.use(passport.initialize());
