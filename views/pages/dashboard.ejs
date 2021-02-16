@@ -24,7 +24,7 @@
         <div class="top">
           <label for="" class="btn close-btn"><i class="fas fa-times"></i></label>
         </div>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="./home">Home</a></li>
         <li><a href="products.html">Products</a></li>
         <li>
           <a href="" class="desktop-item">Shop <span><i class="fas fa-chevron-down"></i></span></a>
@@ -95,6 +95,8 @@
             <small class="count d-flex">0</small>
           </span>
           <span><img src="../../public/img/search.svg" alt="" /></span>
+          <span><%= currentUser.username %></span>
+          <span><a href="/auth/logout"><i class="fa fa-sign-out"></i></a></span>
         </li>
       </ul>
       <label for="" class="btn open-btn"><i class="fas fa-bars"></i></label>
