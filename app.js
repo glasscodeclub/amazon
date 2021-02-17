@@ -7,7 +7,8 @@ var express                 = require("express"),
     passportLocalMongoose   = require("passport-local-mongoose"),
     homeroutes              = require("./routes/home.routes"),
     authroutes              = require("./routes/auth.routes"),
-    dashboardroute          = require("./routes/dashboard.routes")
+    dashboardroute          = require("./routes/dashboard.routes"),
+    cartroute               =require('./routes/cart.routes')
     
 var app = express();
 var port=4000;
@@ -47,6 +48,7 @@ app.get("/", function(req, res){
 app.use("/home", homeroutes);
 app.use("/auth", authroutes);
 app.use("/dashboard", dashboardroute);
+app.use("/cart", cartroute);
 
 app.listen(port, function(){
     console.log("connected to port : ",port);
