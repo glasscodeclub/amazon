@@ -122,19 +122,19 @@
     </div>
 
     <div class="promotion-layout container">
-        <% for(let i=0;i<6;i++) { %>
+      <%categories.forEach(function(category){%>
         
         <div class="promotion-item">
-            <img src="../../public/img/promo<%=(i+1)%>.jpg" alt="" />
+            <img src="<%= category.image %>" alt="" />
             <div class="promotion-content">
            
-                <h3>ITEM <%=(i+1) %></h3>
+                <h3><%= category.name %></h3>
              
              
               <a href="">SHOP NOW</a>
             </div>
           </div>
-        <% } %>
+        <% }) %>
 
       
     </div>
