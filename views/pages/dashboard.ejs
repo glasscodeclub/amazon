@@ -89,11 +89,14 @@
         </li>
         <!-- icons -->
         <li class="icons">
-          <span>
-            
+          <a href="/cart/shopping-cart"><span>
            <img src="../../public/img/shoppingBag.svg" alt="" />
+           <% if(cart == undefined){%>
             <small class="count d-flex">0</small>
-          </span>
+            <% }else{ %>
+            <small class="count d-flex"><%= cart.totalQty%></small>
+            <% } %>
+          </span></a>
           <span><img src="../../public/img/search.svg" alt="" /></span>
           <span><%= currentUser.username %></span>
           <span><a href="/auth/logout"><i class="fa fa-sign-out"></i></a></span>
@@ -111,8 +114,7 @@
       <a href="">View Collection </a>
     </div>
     <div class="right">
-      <img src="https://drive.google.com/uc?id=1Rbh6sUVEr29V5H8yOLyx2FUL_HejrtPH" alt="" />
-      
+      <img src="../../public/img/hero.png" alt="" />
     </div>
   </div>
 
@@ -124,19 +126,19 @@
     </div>
 
     <div class="promotion-layout container">
-        <% for(let i=0;i<6;i++) { %>
+      <%categories.forEach(function(category){%>
         
         <div class="promotion-item">
-            <img src="../../public/img/promo<%=(i+1)%>.jpg" alt="" />
+            <img src="<%= category.image %>" alt="" />
             <div class="promotion-content">
            
-                <h3>ITEM <%=(i+1) %></h3>
+                <h3><%= category.name %></h3>
              
              
               <a href="">SHOP NOW</a>
             </div>
           </div>
-        <% } %>
+        <% }) %>
 
       
     </div>
@@ -156,7 +158,7 @@
             <div class="img-container">
                 <img src="<%=product.imageURL%>" alt="">
                 <div class="addCart">
-                    <i class="fas fa-shopping-cart"></i>
+                    <a href="/cart/add/<%=product._id%>"><i class="fas fa-shopping-cart"></i></a>
                   </div>
         
                   <ul class="side-icons">
@@ -183,7 +185,7 @@
   <section class="section advert">
     <div class="advert-layout container">
       <div class="item ">
-        <img src="https://drive.google.com/uc?id=1y-wNkz76EmrXHC6H9q7y3stdfZORZzAC" alt="">
+        <img src="../../public/img/promo7.jpg" alt="">
         <div class="content left">
           <span>Exclusive Sales</span>
           <h3>Spring Collections</h3>
@@ -191,7 +193,7 @@
         </div>
       </div>
       <div class="item">
-        <img src="https://drive.google.com/uc?id=1csIhvrvWxpzKnhRgxOVTQWrDlCUivifw" alt="">
+        <img src="../../public/img/promo8.jpg" alt="">
         <div class="content  right">
           <span>New Trending</span>
           <h3>Designer Bags</h3>
