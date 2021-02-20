@@ -12,7 +12,8 @@ var express                 = require("express"),
     
 var app = express();
 var port=4000;
-mongoose.connect("mongodb://localhost/amazondb", {
+var mongoURL = "mongodb+srv://arnav:aryan@cluster0.ucqrc.mongodb.net/amazondb?retryWrites=true&w=majority";
+mongoose.connect(mongoURL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
@@ -39,6 +40,8 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 app.use(function(req,res,next){
     res.locals.currentUser = req.user;
+    res.locals.cart = req.session.cart;
+    console.log(res.locals.cart);
     next();
 });
 
