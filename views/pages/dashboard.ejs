@@ -90,12 +90,7 @@
         <!-- icons -->
         <li class="icons">
           <a href="/cart/shopping-cart"><span>
-           <img src="../../public/img/shoppingBag.svg" alt="" />
-           <% if(cart == undefined){%>
-            <small class="count d-flex">0</small>
-            <% }else{ %>
-            <small class="count d-flex"><%= cart.totalQty%></small>
-            <% } %>
+            <img src="../../public/img/shoppingBag.svg" alt="" />
           </span></a>
           <span><img src="../../public/img/search.svg" alt="" /></span>
           <span><%= currentUser.username %></span>
@@ -158,7 +153,19 @@
             <div class="img-container">
                 <img src="<%=product.imageURL%>" alt="">
                 <div class="addCart">
-                    <a href="/cart/add/<%=product._id%>"><i class="fas fa-shopping-cart"></i></a>
+                    
+                      <form method="POST" action="/cart/add/<%= product._id%>">
+                        <div class="form-group">
+                          <input type="hidden" name="product_id" id="quantity" value="<%= product._id %>"></input>
+                          <input type="hidden" name="quantity" id="quantity" value="1"></input>
+                          <input type="hidden" name="totalPrice" id="totalPrice" value="0"></input>
+                          <input type="hidden" name="price" id="priceHidden" value="<%= product.price %>"></input>
+                          <input type="hidden" name="image" id="image" value="<%= product.imageURL %>"></input>
+                          <input type="hidden" name="name" id="name" value="<%= product.name %>"></input>
+                        </div>
+                          <button type="submit" class="btn btn-primary btn-lg"><i class="fas fa-shopping-cart"></i></button>
+                      </form>
+
                   </div>
         
                   <ul class="side-icons">

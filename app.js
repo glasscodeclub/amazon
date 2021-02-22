@@ -40,8 +40,6 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 app.use(function(req,res,next){
     res.locals.currentUser = req.user;
-    res.locals.cart = req.session.cart;
-    console.log(res.locals.cart);
     next();
 });
 

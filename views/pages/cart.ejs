@@ -107,11 +107,11 @@
           <li class="icons">
             <span>
                 <img src="../../public/img/shoppingBag.svg" alt="" />
-                <% if(cart == undefined){%>
-                 <small class="count d-flex">0</small>
-                 <% }else{ %>
-                 <small class="count d-flex"><%= cart.totalQty%></small>
-                 <% } %>
+                <%if(products.length > 0){%>
+                <small class="count d-flex"><%= products.length%></small>
+                <%}else{%>
+                <small class="count d-flex">0</small>
+                <%}%>
             </span>
             <span><img src="./images/search.svg" alt="" /></span>
           </li>
@@ -122,27 +122,27 @@
 
     <!-- Cart Items -->
     <div class="container cart">
+      <%if(products.length > 0){%>
       <table>
         <tr>
           <th>Product</th>
           <th>Quantity</th>
           <th>Subtotal</th>
         </tr>
-        <%if(products != null){%>
         <%products.forEach(function(product){%>
         <tr>
           <td>
             <div class="cart-info">
               <img src="<%= product.image %>" alt="" />
               <div>
-                <p><%= product.name %></p>
+                <p><%= product.itemname %></p>
                 <br />
                 <a href="#">Remove</a>
               </div>
             </div>
           </td>
-          <td><%= product.qty %></td>
-          <td><%= product.price %></td>
+          <td><%= product.quantity %></td>
+          <td>Rs <%= product.price %></td>
         </tr>
         <%})%>
       </table>
@@ -150,18 +150,18 @@
       <div class="total-price" style="float: right;">
         <table>
           <tr>
-            <td>total</td>
-            <td><%= totalPrice %></td>
+            <td>Total</td>
+            <td>Rs <%= totalPrice %></td>
           </tr>
         </table>
         <a href="#" class="checkout btn">Checkout</a>
       </div>
-      <%}else{%>
-        <div class="shadow-none p-3 mb-5 bg-light rounded jumbotron">
-            <h1 class="display-4">Your Cart is empty.</h1>
-            <p class="lead">Your shopping cart is waiting. Give it purpose – fill it with clothing, electronics and more.</p>
-        </div>
-        <%}%>
     </div>
+    <%}else{%>
+      <div class="shadow-none p-3 mb-5 bg-light rounded jumbotron">
+          <h1 class="display-4">Your Cart is empty.</h1>
+          <p class="lead">Your shopping cart is waiting. Give it purpose – fill it with clothing, electronics and more.</p>
+      </div>
+    <%}%>
 
     <%- include("../partials/allfooter.ejs") %>

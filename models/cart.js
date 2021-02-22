@@ -1,26 +1,21 @@
-const { name } = require("ejs");
+var mongoose = require('mongoose');
 
-module.exports = function Cart(oldcart){
-  this.items = oldcart.items || {};
-  this.totalQty = oldcart.totalQty || 0;
-  this.totalPrice = oldcart.totalPrice || 0;
+var CartSchema = new mongoose.Schema({
+  owner: { 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'User'
+          },
+  totalPrice: { type: Number, default: 0},
+  items: [{
+    item: { 
+      type: mongoose.Schema.Types.ObjectId, 
+      ref: 'Product'
+    },
+    quantity: { type: Number, default: 1},
+    price: { type: Number, default: 0},
+    image: String,
+    itemname: String,
+  }]
+});
 
-  this.add = function(item, id, image, name){
-    var storedItem = this.items[id];
-    if(!storedItem){
-      storedItem = this.items[id] = {item: item, qty: 0, price: 0, image: image, name: name}
-    }
-    storedItem.qty++;
-    storedItem.price = storedItem.item.price * storedItem.qty;
-    this.totalQty++;
-    this.totalPrice += storedItem.item.price;
-  };
-
-  this.generateArray = function(){
-    var arr = [];
-    for(var id in this.items){
-      arr.push(this.items[id]);
-    }
-    return arr;
-  }
-}
+module.exports = mongoose.model('Cart', CartSchema);
