@@ -137,11 +137,13 @@
               <div>
                 <p><%= product.itemname %></p>
                 <br />
-                <a href="#"><button class="btn-remove">Remove</button></a>
+                <form action="/cart/shopping-cart/<%=currentUser._id%>/<%=product.item%>" method="POST">
+                  <button class="btn-remove">Remove</button>
+                </form>
               </div>
             </div>
           </td>
-          <td> <button class="btnn btnn-minus" >- </button><%= product.quantity %><button class="btnn"> +</button> </td>
+          <td> <button class="btnn btnn-minus" >-</button><%= product.quantity %><button class="btnn"> +</button> </td>
           <td>Rs <%= product.price %></td>
         </tr>
         <%})%>
