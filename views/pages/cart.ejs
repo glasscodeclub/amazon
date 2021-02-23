@@ -137,13 +137,21 @@
               <div>
                 <p><%= product.itemname %></p>
                 <br />
-                <form action="/cart/shopping-cart/<%=currentUser._id%>/<%=product.item%>" method="POST">
+                <form action="/cart/shopping-cart/remove/<%=currentUser._id%>/<%=product.item%>" method="POST">
                   <button class="btn-remove">Remove</button>
                 </form>
               </div>
             </div>
           </td>
-          <td> <button class="btnn btnn-minus" >-</button><%= product.quantity %><button class="btnn"> +</button> </td>
+          <td>             
+            <form action="/cart/shopping-cart/minus/<%=currentUser._id%>/<%=product.item%>" method="POST">
+              <button class="btnn btnn-minus" >- </button>
+            </form>
+            <%= product.quantity %>
+            <form action="/cart/shopping-cart/plus/<%=currentUser._id%>/<%=product.item%>" method="POST">
+              <button class="btnn"> +</button>
+            </form> 
+          </td>
           <td>Rs <%= product.price %></td>
         </tr>
         <%})%>
