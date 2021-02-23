@@ -10,6 +10,10 @@
 .brand-wrapper {
   margin-bottom: 10px; }
 
+  .logo{
+    height: 2em;
+    width: 2em;
+  }
 
 .login-card {
   border: 0;

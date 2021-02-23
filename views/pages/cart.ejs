@@ -19,9 +19,9 @@
   <body>
 
     <!-- Navigation -->
-    <nav class="nav">
+    <nav class="nav nav-cart">
       <div class="wrapper container">
-        <div class="logo"><a href="">AMAZON</a></div>
+        <a href=""><img class="brand-logo-cart" src="../../public/img/logo.png" alt="logo"></a>
         <ul class="nav-list">
           <div class="top">
             <label for="" class="btn close-btn"
@@ -41,7 +41,7 @@
             <div class="mega-box">
               <div class="content">
                 <div class="row">
-                  <img src="./images/woman.jpg" alt="" />
+                  <img src="../../public/img/woman.jpg" alt="" />
                 </div>
                 <div class="row">
                   <header>Shop Layout</header>
@@ -137,11 +137,11 @@
               <div>
                 <p><%= product.itemname %></p>
                 <br />
-                <a href="#">Remove</a>
+                <a href="#"><button class="btn-remove">Remove</button></a>
               </div>
             </div>
           </td>
-          <td><%= product.quantity %></td>
+          <td> <button class="btnn btnn-minus" >- </button><%= product.quantity %><button class="btnn"> +</button> </td>
           <td>Rs <%= product.price %></td>
         </tr>
         <%})%>
@@ -154,7 +154,7 @@
             <td>Rs <%= totalPrice %></td>
           </tr>
         </table>
-        <a href="#" class="checkout btn">Checkout</a>
+        <a href="#" class="check-btn checkout btn">Checkout</a>
       </div>
     </div>
     <%}else{%>
