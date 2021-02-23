@@ -60,4 +60,23 @@ router.get("/shopping-cart", middlewares.isLoggedIn, function(req,res){
     });
 });
 
+router.post("/shopping-cart/:user_id/:item_id",middlewares.isLoggedIn,function(req,res){
+    var item = req.params.item_id;
+    let filter={owner: req.params.user_id };
+    cartLib.findOne(filter, function(err, cart) {
+        if(err)
+            console.log(err);
+
+        for(var i=0;i<cart.items.length;i++){
+            if(cart.items[i].item == item){
+                cart.totalPrice = cart.totalPrice - cart.items[i].price;
+                cart.items.splice(i,1);
+                break;
+            }
+        }
+        cart.save();
+        res.redirect("/cart/shopping-cart");
+    })
+})
+
 module.exports = router;
