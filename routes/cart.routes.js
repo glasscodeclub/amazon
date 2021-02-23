@@ -4,6 +4,23 @@ var middlewares = require("../middlewares/auth");
 var Cart = require("../models/cart")
 var cartLib = require("../lib/cart.lib");
 
+router.get("/shopping-cart", middlewares.isLoggedIn, function(req,res){
+    let filter={owner: req.user._id };
+    cartLib.findOne(filter, function(err, cart) {
+        if(err)
+            console.log(err);
+        if(cart != null){
+            res.render("./pages/cart", {products: cart.items, totalPrice: cart.totalPrice});
+        }
+        else
+            res.render("./pages/cart", {products: {}, totalPrice: null});
+    });
+});
+
+router.get("/",middlewares.isLoggedIn, function(req,res){
+    res.redirect("/cart/shopping-cart");
+})
+
 router.post("/add/:id",middlewares.isLoggedIn, function(req,res){
     var item = req.body.product_id,
         price = parseInt(req.body.price),
@@ -13,7 +30,7 @@ router.post("/add/:id",middlewares.isLoggedIn, function(req,res){
         no = 0;
     var cartitem = {item, price, quantity, image, itemname};
     var owner = req.user._id;
-    var totalPrice = parseInt(req.body.totalPrice);
+    var totalPrice = 0;
     var items = [cartitem];
     var usercart = {owner, totalPrice, items};
 
@@ -25,7 +42,9 @@ router.post("/add/:id",middlewares.isLoggedIn, function(req,res){
                     console.log(err);
                 for(var i=0;i<newcart.items.length;i++)
                     newcart.totalPrice = newcart.totalPrice + newcart.items[i].price;
-                newcart.save();
+                cart = newcart;
+                cart.save();
+                no = cart.items.length;
             })
         }else{
             var finditem = false;
@@ -45,22 +64,11 @@ router.post("/add/:id",middlewares.isLoggedIn, function(req,res){
             no = cart.items.length;
         }
     });
-    res.redirect("/dashboard");
+    res.redirect("/cart");
 });
 
-router.get("/shopping-cart", middlewares.isLoggedIn, function(req,res){
-    let filter={owner: req.user._id };
-    cartLib.findOne(filter, function(err, cart) {
-        if(err)
-            console.log(err);
-        if(cart != null)
-            res.render("./pages/cart", {products: cart.items, totalPrice: cart.totalPrice});
-        else
-            res.render("./pages/cart", {products: {}, totalPrice: null});
-    });
-});
 
-router.post("/shopping-cart/:user_id/:item_id",middlewares.isLoggedIn,function(req,res){
+router.post("/shopping-cart/remove/:user_id/:item_id",middlewares.isLoggedIn,function(req,res){
     var item = req.params.item_id;
     let filter={owner: req.params.user_id };
     cartLib.findOne(filter, function(err, cart) {
@@ -71,6 +79,48 @@ router.post("/shopping-cart/:user_id/:item_id",middlewares.isLoggedIn,function(r
             if(cart.items[i].item == item){
                 cart.totalPrice = cart.totalPrice - cart.items[i].price;
                 cart.items.splice(i,1);
+                break;
+            }
+        }
+        cart.save();
+        res.redirect("/cart/shopping-cart");
+    })
+})
+
+router.post("/shopping-cart/minus/:user_id/:item_id",middlewares.isLoggedIn,function(req,res){
+    var item = req.params.item_id;
+    let filter={owner: req.params.user_id };
+    cartLib.findOne(filter, function(err, cart) {
+        if(err)
+            console.log(err);
+
+        for(var i=0;i<cart.items.length;i++){
+            if(cart.items[i].item == item){
+                cart.totalPrice = cart.totalPrice - (cart.items[i].price / cart.items[i].quantity);
+                cart.items[i].price = cart.items[i].price - (cart.items[i].price / cart.items[i].quantity);
+                cart.items[i].quantity = cart.items[i].quantity - 1;
+                if(cart.items[i].quantity == 0)
+                    cart.items.splice(i,1);
+                break;
+            }
+        }
+        cart.save();
+        res.redirect("/cart/shopping-cart");
+    })
+})
+
+router.post("/shopping-cart/plus/:user_id/:item_id",middlewares.isLoggedIn,function(req,res){
+    var item = req.params.item_id;
+    let filter={owner: req.params.user_id };
+    cartLib.findOne(filter, function(err, cart) {
+        if(err)
+            console.log(err);
+
+        for(var i=0;i<cart.items.length;i++){
+            if(cart.items[i].item == item){
+                cart.totalPrice = cart.totalPrice + (cart.items[i].price / cart.items[i].quantity);
+                cart.items[i].price = cart.items[i].price + (cart.items[i].price / cart.items[i].quantity);
+                cart.items[i].quantity = cart.items[i].quantity + 1;
                 break;
             }
         }
