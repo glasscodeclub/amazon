@@ -144,11 +144,11 @@
             </div>
           </td>
           <td>             
-            <form action="/cart/shopping-cart/minus/<%=currentUser._id%>/<%=product.item%>" method="POST">
+            <form class="button-minus" action="/cart/shopping-cart/minus/<%=currentUser._id%>/<%=product.item%>" method="POST">
               <button class="btnn btnn-minus" >- </button>
             </form>
             <%= product.quantity %>
-            <form action="/cart/shopping-cart/plus/<%=currentUser._id%>/<%=product.item%>" method="POST">
+            <form class="button-minus" action="/cart/shopping-cart/plus/<%=currentUser._id%>/<%=product.item%>" method="POST">
               <button class="btnn"> +</button>
             </form> 
           </td>

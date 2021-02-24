@@ -63,15 +63,16 @@ li {
   }
 }
 
+
 .brand-logo{
-  height: 2.8em;
-  width: 2.8em;
+    height: 3.3em;
+    width: 7em;
   margin-top: .3em;
 }
 
 .brand-logo-cart{
-  height: 2.8em;
-  width: 2.8em;
+  height: 3.3em;
+  width: 7em;
   margin-bottom: 1em;
 }
 
@@ -280,6 +281,9 @@ nav .wrapper {
   margin-left: 3em;
 }
 
+.button-minus{
+  display: inline;
+}
 .wrapper .btn {
   color: var(--white);
   font-size: 2rem;
