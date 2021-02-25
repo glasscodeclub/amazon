@@ -21,4 +21,21 @@ router.get("/",middlewares.isLoggedIn, function(req,res){
     })
 });
 
+router.get("/:cat_id", middlewares.isLoggedIn, function(req,res){
+    let cfilter={_id: req.params.cat_id};
+    categoryLib.findbyId(cfilter, function(err,category){
+        if(err){
+            return res.send(err)
+        }
+        let filter={category: category[0].name};
+        productLib.findbyId(filter, function(err,products){
+            if(err){
+                return res.send(err)
+            }else{
+                res.render("./pages/category",{data:products});
+            }
+        })
+    })
+})
+
 module.exports = router;
