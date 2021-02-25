@@ -14,8 +14,8 @@
 /* ======== Base ========== */
 
 *,
-*::after,
-*::before {
+*::before,
+*::after {
   padding: 0;
   margin: 0;
   box-sizing: inherit;
@@ -31,7 +31,7 @@ html {
 }
 
 body {
-  position: relative;
+  
   font-family: "Open Sans", sans-serif;
   font-size: 1.6rem;
   font-weight: 400;
@@ -40,8 +40,7 @@ body {
   background-color: var(--white);
 }
 
-li,
-ul {
+li{
   list-style: none;
 }
 
@@ -1223,7 +1222,7 @@ nav .wrapper {
   background: linear-gradient(to top,
   rgb(17, 117, 231, 0.5),
   rgba(59, 255, 248, 0.6)),
-    url("./images/Banner1.jpg") top/cover no-repeat fixed;
+    url("../img/banner2") top/cover no-repeat fixed;
 }
 
 .special__offer::before {
@@ -1313,6 +1312,15 @@ nav .wrapper {
   .offer__container a {
     padding: 0.5rem 2.3rem;
   }
+}
+
+.btnn-cart{
+  display: inline-block;
+    padding: 1rem 3rem;
+    color: var(--grey-color);
+    font-weight: 800;
+    background-color: var(--default-color);
+    border: none;
 }
 
 /* ============== Featured ============== */
@@ -1540,6 +1548,8 @@ nav .wrapper {
     justify-content: start;
   }
 }
+
+
 
 /* ============ Footer ============ */
 
