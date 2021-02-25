@@ -24,8 +24,8 @@
         <div class="top">
           <label for="" class="btn close-btn"><i class="fas fa-times"></i></label>
         </div>
-        <li><a href="./home">Home</a></li>
-        <li><a href="products.html">Products</a></li>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="">Products</a></li>
         <li>
           <a href="" class="desktop-item">Shop <span><i class="fas fa-chevron-down"></i></span></a>
           <input type="checkbox" id="showMega" />
@@ -130,7 +130,7 @@
                 <h3><%= category.name %></h3>
             
             
-              <a href="">SHOP NOW</a>
+              <a href="/dashboard/<%= category._id%>">SHOP NOW</a>
             </div>
           </div>
         <% }) %>
