@@ -104,7 +104,7 @@
             </ul>
           </li>
           <!-- icons -->
-          <li class="icons">
+          <li class="icons " >
             <span>
                 <img src="../../public/img/shoppingBag.svg" alt="" />
                 <%if(products.length > 0){%>
@@ -113,7 +113,18 @@
                 <small class="count d-flex">0</small>
                 <%}%>
             </span>
-            <span><img src="./images/search.svg" alt="" /></span>
+            <span> 
+              <form action="#"> 
+                <input class="searchBox search-input  " type="text"
+                    placeholder=" Search ..."
+                    name="search" />
+                    <button class="searchBox search-button btn-cart"> 
+                      <i class="fa fa-search "
+                          style="font-size: 18px;"> 
+                      </i> 
+                  </button>
+              </form>
+            </span>
           </li>
         </ul>
         <label for="" class="btn open-btn"><i class="fas fa-bars"></i></label>

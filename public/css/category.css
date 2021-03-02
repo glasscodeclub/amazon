@@ -208,6 +208,30 @@ nav .wrapper {
   top: 6.5rem;
 }
 
+.searchBox{
+  display: inline !important;
+}
+
+.search-input[type=text]{ 
+  width:10em; 
+  height:25px; 
+  border-radius:25px; 
+  border-color: var(--primary);
+  
+} 
+    
+
+    
+.search-button{ 
+  
+  color: grey;
+  padding: .6em;
+  font-size: 12px; 
+  border-radius: 30%;
+  border: none; 
+  cursor: pointer; 
+}  
+
 .mega-box {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
   position: absolute;
