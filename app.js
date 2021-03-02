@@ -8,7 +8,8 @@ var express                 = require("express"),
     homeroutes              = require("./routes/home.routes"),
     authroutes              = require("./routes/auth.routes"),
     dashboardroute          = require("./routes/dashboard.routes"),
-    cartroute               =require('./routes/cart.routes')
+    cartroute               = require('./routes/cart.routes'),
+    searchroute             = require("./routes/search.routes")
     
 var app = express();
 var port=4000;
@@ -50,6 +51,7 @@ app.use("/home", homeroutes);
 app.use("/auth", authroutes);
 app.use("/dashboard", dashboardroute);
 app.use("/cart", cartroute);
+app.use("/search", searchroute);
 
 app.listen(port, function(){
     console.log("connected to port : ",port);
