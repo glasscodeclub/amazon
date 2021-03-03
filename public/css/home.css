@@ -263,6 +263,9 @@ nav .wrapper {
   cursor: pointer; 
 }  
 
+.label-color{
+  color: var(--primary);
+}
 
 
 
@@ -281,6 +284,12 @@ nav .wrapper {
   border: none;
   outline: none;
 }
+
+
+.btn-cart-search{
+  height: 36px;
+}
+
 
 
 
@@ -764,7 +773,7 @@ nav .wrapper {
   right: 0;
   bottom: 0.6rem;
   background-color: var(--white);
-  border-radius: 50%;
+  border-radius: 10%;
   padding: 0.3rem 0.3rem;
   box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
   transition: all 300ms ease-in-out;
@@ -1288,7 +1297,7 @@ th:last-child {
   display: flex;
   align-items: center;
   justify-content: end;
-  margin-bottom: 3rem;
+  margin-bottom: .5rem;
 }
 
 .col-3-of-4 form .item {

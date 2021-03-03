@@ -239,7 +239,7 @@
       <div class="col-3-of-4">
         <form action="">
           <div class="item">
-            <label for="sort-by">Sort By</label>
+            <label for="sort-by"  style="color: #457dff;" >Sort By</label>
             <select name="sort-by" id="sort-by">
               <option value="title" selected="selected">Name</option>
               <option value="number">Price</option>
@@ -248,7 +248,7 @@
             </select>
           </div>
           <div class="item">
-            <label for="order-by">Order</label>
+            <label for="order-by" style="color: #457dff;">Order</label>
             <select name="order-by" id="sort-by">
               <option value="ASC" selected="selected">ASC</option>
               <option value="DESC">DESC</option>
@@ -262,7 +262,7 @@
           <%products.forEach(function(product){%>
           <div class="product">
             <div class="img-container">
-              <img src="<%=product.imageURL%>" alt="" />
+              <img style="width: 250px; height: 250px;"  src="<%=product.imageURL%>" alt="" />
               <div class="addCart">
                     
                 <form method="POST" action="/cart/add/<%= product._id%>">
@@ -273,7 +273,7 @@
                     <input type="hidden" name="image" id="image" value="<%= product.imageURL %>"></input>
                     <input type="hidden" name="name" id="name" value="<%= product.name %>"></input>
                   </div>
-                    <button type="submit" class="btn btn-cart btn-primary btn-lg"><i class="fas fa-shopping-cart"></i></button>
+                    <button type="submit" class="btn btn-cart btn-cart-search btn-primary btn-lg"><i class="fas fa-shopping-cart"></i></button>
                 </form>
 
             </div>
