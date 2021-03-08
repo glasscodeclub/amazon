@@ -248,7 +248,7 @@ nav .wrapper {
   height:25px; 
   border-radius:25px; 
   border-color: var(--primary);
-  
+  outline: none;
 } 
     
 
