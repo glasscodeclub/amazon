@@ -9,7 +9,9 @@ var express                 = require("express"),
     authroutes              = require("./routes/auth.routes"),
     dashboardroute          = require("./routes/dashboard.routes"),
     cartroute               = require('./routes/cart.routes'),
-    searchroute             = require("./routes/search.routes")
+    searchroute             = require("./routes/search.routes"),
+    wishListroute           = require("./routes/wishlist.routes"),
+    orderroute              = require("./routes/order.routes")
     
 var app = express();
 var port=4000;
@@ -52,6 +54,8 @@ app.use("/auth", authroutes);
 app.use("/dashboard", dashboardroute);
 app.use("/cart", cartroute);
 app.use("/search", searchroute);
+app.use("/wishlist", wishListroute);
+app.use("/order", orderroute);
 
 app.listen(port, function(){
     console.log("connected to port : ",port);
