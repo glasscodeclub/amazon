@@ -1,1 +1,158 @@
-<h1>sale page</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/3bb9d2c9bc.js" crossorigin="anonymous"></script>
+  <!-- Glidejs -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.css">
+
+  <!-- Custom StyleSheet -->
+  <link rel="stylesheet" href="../../public/css/home.css" />
+  
+
+
+</head>
+
+<body >
+
+    <%- include("../partials/nav.ejs") %>
+    <section class="section promotion">
+        <!-- ADVERT -->
+      <section class="advert section">
+        <div class="advert-center container">
+          <div class="advert-box">
+            <div class="dotted">
+              <div class="content">
+                <h2>
+                  Girls <br />
+                  Clothing
+                </h2>
+                <h4>Worlds Best Brands</h4>
+              </div>
+            </div>
+            <img src="../../public/img/advert1.png" alt="">
+          </div>
+  
+          <div class="advert-box">
+            <div class="dotted">
+              <div class="content">
+                <h2>
+                  Summer <br />
+                  Clothing
+                </h2>
+                <h4>Worlds Best Brands</h4>
+              </div>
+            </div>
+            <img src="../../public/img/advert3.png" alt="">
+          </div>
+  
+          <div class="advert-box">
+            <div class="dotted">
+              <div class="content">
+                <h2>
+                  Boys <br />
+                  Clothing
+                </h2>
+                <h4>Worlds Best Brands</h4>
+              </div>
+            </div>
+            <img src="../../public/img/advert2.png" alt="">
+          </div>
+        </div>
+      </section>
+
+
+        <!-- SLIDER -->
+    <div class="section brands">
+      <div class="title">
+        <h2 class="">New Season Collection</h2>
+        <span>Select from the premium product brands and save upto 50%</span>
+      </div>
+  
+      <div class="brand-layout container">
+        <div class="glide" id="glide1">
+          <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
+              <li class="glide__slide">
+                <img  class="slide-img" src="../../public/img/pic1.png" alt="">
+                <h4 class="slide-h4">IMAGE 1</h3>
+              </li>
+              <li class="glide__slide">
+                <img class="slide-img" src="../../public/img/pic10.png" alt="">
+                <h4 class="slide-h4">IMAGE 2</h3>
+              </li>
+              <li class="glide__slide">
+                <img class="slide-img" src="../../public/img/pic3.png" alt="">
+                <h4 class="slide-h4">IMAGE 3</h3>
+              </li>
+              <li class="glide__slide">
+                <img class="slide-img" src="../../public/img/pic4.png" alt="">
+                <h4 class="slide-h4">IMAGE 4</h3>
+              </li>
+              <li class="glide__slide">
+                <img class="slide-img" src="../../public/img/pic6.png" alt="">
+                <h4 class="slide-h4">IMAGE 5</h3>
+              </li>
+              <li class="glide__slide">
+                <img class="slide-img" src="../../public/img/pic7.png" alt="">
+                <h4 class="slide-h4">IMAGE 6</h3>
+              </li>
+              <li class="glide__slide">
+                <img class="slide-img" src="../../public/img/pic8.png" alt="">
+                <h4 class="slide-h4">IMAGE 7</h3>
+              </li>
+              
+              
+            </ul>
+          </div>
+        </div>
+  
+      </div>
+      
+    </div>
+
+    <!-- GRID -->
+    <section class="gallary container">
+      <figure class="gallary-item item-1">
+        <img src="../../public/img/grid_1.jpg" alt="" class="gallary-img">
+        <div class="content">
+          <h2>Our Popular Products</h2>
+          <a href="#">View more</a>
+        </div>
+      </figure>
+
+      <figure class="gallary-item item-2">
+        <img src="../../public/img/grid_2.jpg" alt="" class="gallary-img">
+        <div class="content">
+          <h2>Popular Collections</h2>
+        </div>
+      </figure>
+
+      <figure class="gallary-item item-3">
+        <img src="../../public/img/grid_3.jpg" alt="" class="gallary-img">
+        <div class="content">
+          <h2>Newest Collections</h2>
+        </div>
+      </figure>
+
+      <figure class="gallary-item item-4">
+        <img src="../../public/img/grid_4.jpg" alt="" class="gallary-img">
+        <div class="content">
+          <h2>Up to 70% OFF Spring Sale!</h2>
+        </div>
+      </figure>
+    </section>
+
+    
+    
+
+
+    </section>
+    
+
+    
+    <%- include("../partials/allfooter.ejs") %>
