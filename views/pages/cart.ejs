@@ -10,6 +10,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
     />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/3bb9d2c9bc.js" crossorigin="anonymous"></script>
 
     <!-- Custom StyleSheet -->
     <link rel="stylesheet" href="../../public/css/home.css">
@@ -44,61 +45,53 @@
                   <img src="../../public/img/woman.jpg" alt="" />
                 </div>
                 <div class="row">
-                  <header>Shop Layout</header>
+                  <header>Trending</header>
+                    <ul class="mega-links">
+                      <li><a href="#">New Releases</a></li>
+                      <li><a href="#">Best Sellers</a></li>
+                      <li><a href="#">Today's Deals</a></li>
+                      
+                    </ul>
+                </div>
+                <div class="row">
+                  <header>Shop by Department</header>
                   <ul class="mega-links">
-                    <li><a href="#">Shop With Background</a></li>
-                    <li><a href="#">Shop Mini Categories</a></li>
-                    <li><a href="#">Shop Only Categories</a></li>
-                    <li><a href="#">Shop Icon Categories</a></li>
+                    <li><a href="#">Fashion</a></li>
+                    <li><a href="#">Mobiles</a></li>
+                    <li><a href="#">Furniture</a></li>
+                    <li><a href="#">Grocery</a></li>
                   </ul>
                 </div>
                 <div class="row">
-                  <header>Filter Layout</header>
+                  <header>Discover</header>
                   <ul class="mega-links">
-                    <li><a href="#">Sidebar</a></li>
-                    <li><a href="#">Filter Default</a></li>
-                    <li><a href="#">Filter Drawer</a></li>
-                    <li><a href="#">Filter Dropdown</a></li>
-                  </ul>
-                </div>
-                <div class="row">
-                  <header>Product Layout</header>
-                  <ul class="mega-links">
-                    <li><a href="#">Layout Zoom</a></li>
-                    <li><a href="#">Layout Sticky</a></li>
-                    <li><a href="#">Layout Sticky 2</a></li>
-                    <li><a href="#">Layout Scroll</a></li>
+                    <li><a href="#">Gift Cards</a></li>
+                    <li><a href="#">Brands</a></li>
+                    <li><a href="#">Sell on Amazon</a></li>
+                    <li><a href="#">Coupns</a></li>
                   </ul>
                 </div>
               </div>
             </div>
           </li>
-          <li><a href="">Blog</a></li>
+          <li><a href="">Returns</a></li>
           <li>
-            <a href="" class="desktop-item"
-              >Vendors <span><i class="fas fa-chevron-down"></i></span
-            ></a>
+            <a href="" class="desktop-item">Vendors <span><i class="fas fa-chevron-down"></i></span></a>
             <input type="checkbox" id="showdrop1" />
-            <label for="showdrop1" class="mobile-item"
-              >Vendors <span><i class="fas fa-chevron-down"></i></span
-            ></label>
+            <label for="showdrop1" class="mobile-item">Vendors <span><i class="fas fa-chevron-down"></i></span></label>
             <ul class="drop-menu1">
               <li><a href="">Vendor Store listings</a></li>
               <li><a href="">Store Details</a></li>
             </ul>
           </li>
-
+  
           <li>
-            <a href="" class="desktop-item"
-              >Page <span><i class="fas fa-chevron-down"></i></span
-            ></a>
+            <a href="" class="desktop-item">Page <span><i class="fas fa-chevron-down"></i></span></a>
             <input type="checkbox" id="showdrop2" />
-            <label for="showdrop2" class="mobile-item"
-              >Page <span><i class="fas fa-chevron-down"></i></span
-            ></label>
+            <label for="showdrop2" class="mobile-item">Page <span><i class="fas fa-chevron-down"></i></span></label>
             <ul class="drop-menu2">
               <li><a href="">About</a></li>
-              <li><a href="">Contact</a></li>
+              <li><a href="/contactus">Contact</a></li>
               <li><a href="">Faq</a></li>
               <li><a href="">Page 404</a></li>
             </ul>
@@ -125,6 +118,8 @@
                   </button>
               </form>
             </span>
+            <span ><%= currentUser.username %></span>
+          <span><a href="/auth/logout"><i class="fa fa-sign-out"></i></a></span>
           </li>
         </ul>
         <label for="" class="btn open-btn"><i class="fas fa-bars"></i></label>

@@ -1,1 +1,77 @@
-<h1>Contact uS</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/3bb9d2c9bc.js" crossorigin="anonymous"></script>
+  <!-- Glidejs -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.css">
+
+  <!-- Custom StyleSheet -->
+  <link rel="stylesheet" href="../../public/css/home.css" />
+  <link rel="stylesheet" href="../../public/css/contactus.css" />
+
+  
+</head>
+
+<body >
+
+    <%- include("../partials/nav.ejs") %>
+    <section class="section promotion contactus">
+
+      
+      <div class="background">
+        <div class="container contactus">
+          <div class="screen">
+            <div class="screen-header">
+              <div class="screen-header-left">
+                <div class="screen-header-button close"></div>
+                <div class="screen-header-button maximize"></div>
+                <div class="screen-header-button minimize"></div>
+              </div>
+              <div class="screen-header-right">
+                <div class="screen-header-ellipsis"></div>
+                <div class="screen-header-ellipsis"></div>
+                <div class="screen-header-ellipsis"></div>
+              </div>
+            </div>
+            <div class="screen-body">
+              <div class="screen-body-item left">
+                <div class="app-title">
+                  <span>CONTACT</span>
+                  <span>US</span>
+                </div>
+                <div class="app-contact">CONTACT INFO : +91 XXX XXX XXXX</div>
+              </div>
+              <div class="screen-body-item">
+                <div class="app-form">
+                  <div class="app-form-group">
+                    <input class="app-form-control contactus" placeholder="NAME" >
+                  </div>
+                  <div class="app-form-group">
+                    <input class="app-form-control contactus" placeholder="EMAIL">
+                  </div>
+                  <div class="app-form-group">
+                    <input class="app-form-control contactus" placeholder="CONTACT No.">
+                  </div>
+                  <div class="app-form-group message">
+                    <input class="app-form-control contactus" placeholder="MESSAGE">
+                  </div>
+                  <div class="app-form-group buttons">
+                    <button class="app-form-button contactus">CANCEL</button>
+                    <button class="app-form-button contactus">SEND</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+    </section>
+    
+    <%- include("../partials/allfooter.ejs") %>
