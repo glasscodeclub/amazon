@@ -24,111 +24,111 @@
 
   <section class="section products">
     <div class="products-layout container">
-      <div class="col-1-of-4">
-        <div>
-          <div class="block-title">
-            <h3>Category</h3>
+        <div class="col-1-of-4">
+          <div>
+            <div class="block-title">
+              <h3>Category</h3>
+            </div>
+            <form action="/search">
+              <input type="hidden" name="category" value="null"></input>
+              <%categories.forEach(function(category){%>
+                <ul class="block-content">
+                  <li>
+                    <input type="radio" name="category" value="<%= category.name %>">
+                    <label for="category">
+                      <span><%= category.name %></span>
+                    </label>
+                  </li>
+                </ul>
+              <%})%>
           </div>
-          <%categories.forEach(function(category){%>
-          <ul class="block-content">
-            <li>
-              <input type="radio" name="category" id="<%= category.name %>">
-              <label for="category">
-                <span><%= category.name %></span>
-              </label>
-            </li>
-          </ul>
-          <%})%>
+
+          <!-- <div>
+            <div class="block-title">
+              <h3>Brands</h3>
+            </div>
+            <ul class="block-content">
+              <li>
+                <input type="checkbox" name="" id="">
+                <label for="">
+                  <span>Gucci</span>
+                </label>
+              </li>
+            </ul>
+          </div> -->
         </div>
 
-        <div>
-          <div class="block-title">
-            <h3>Brands</h3>
-          </div>
-          <ul class="block-content">
-            <li>
-              <input type="checkbox" name="" id="">
-              <label for="">
-                <span>Gucci</span>
-              </label>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="col-3-of-4">
-        <form action="">
+        <div class="col-3-of-4">
+          <p>Showing results for "<%=name%>"</p>
           <div class="item">
+            <input type="hidden" name="search" id="name" value="<%=name%>"></input>
             <label for="sort-by"  style="color: #457dff;" >Sort By</label>
-            <select name="sort-by" id="sort-by">
+            <select name="sortby" id="sort-by">
               <option value="title" selected="selected">Name</option>
               <option value="number">Price</option>
-              <option value="search_api_relevance">Relevance</option>
-              <option value="created">Newness</option>
             </select>
           </div>
           <div class="item">
             <label for="order-by" style="color: #457dff;">Order</label>
-            <select name="order-by" id="sort-by">
+            <select name="orderby" id="sort-by">
               <option value="ASC" selected="selected">ASC</option>
               <option value="DESC">DESC</option>
             </select>
           </div>
-          <button type="submit">Apply</button>
+          <button>Apply</button>
         </form>
+          <div class="product-layout">
+            <%if(products.length > 0){%>
+            <%products.forEach(function(product){%>
+            <div class="product">
+              <div class="img-container">
+                <img style="width: 250px; height: 250px;"  src="<%=product.imageURL%>" alt="" />
+                <div class="addCart">
+                      
+                  <form method="POST" action="/cart/add/<%= product._id%>">
+                    <div class="form-group">
+                      <input type="hidden" name="product_id" id="quantity" value="<%= product._id %>"></input>
+                      <input type="hidden" name="quantity" id="quantity" value="1"></input>
+                      <input type="hidden" name="price" id="priceHidden" value="<%= product.price %>"></input>
+                      <input type="hidden" name="image" id="image" value="<%= product.imageURL %>"></input>
+                      <input type="hidden" name="name" id="name" value="<%= product.name %>"></input>
+                    </div>
+                      <button type="submit" class="btn btn-cart btn-cart-search btn-primary btn-lg"><i class="fas fa-shopping-cart"></i></button>
+                  </form>
 
-        <div class="product-layout">
-          <%if(products.length > 0){%>
-          <%products.forEach(function(product){%>
-          <div class="product">
-            <div class="img-container">
-              <img style="width: 250px; height: 250px;"  src="<%=product.imageURL%>" alt="" />
-              <div class="addCart">
-                    
-                <form method="POST" action="/cart/add/<%= product._id%>">
-                  <div class="form-group">
-                    <input type="hidden" name="product_id" id="quantity" value="<%= product._id %>"></input>
-                    <input type="hidden" name="quantity" id="quantity" value="1"></input>
-                    <input type="hidden" name="price" id="priceHidden" value="<%= product.price %>"></input>
-                    <input type="hidden" name="image" id="image" value="<%= product.imageURL %>"></input>
-                    <input type="hidden" name="name" id="name" value="<%= product.name %>"></input>
-                  </div>
-                    <button type="submit" class="btn btn-cart btn-cart-search btn-primary btn-lg"><i class="fas fa-shopping-cart"></i></button>
-                </form>
+              </div>
+                <ul class="side-icons">
+                  <span><i class="fas fa-search"></i></span>
+                  <span><i class="far fa-heart"></i></span>
+                  <span><i class="fas fa-sliders-h"></i></span>
+                </ul>
+              </div>
 
-            </div>
-              <ul class="side-icons">
-                <span><i class="fas fa-search"></i></span>
-                <span><i class="far fa-heart"></i></span>
-                <span><i class="fas fa-sliders-h"></i></span>
-              </ul>
-            </div>
-
-            <div class="bottom">
-              <a href=""><%=product.name%></a>
-              <div class="price">
-                <span><%=product.price%></span>
+              <div class="bottom">
+                <a href=""><%=product.name%></a>
+                <div class="price">
+                  <span><%=product.price%></span>
+                </div>
               </div>
             </div>
+            <%})%>
+            <%}else{%>
+              <div class="shadow-none p-3 mb-5 bg-light rounded jumbotron">
+                  <h1 class="display-4">No products found</h1>
+                  <p class="lead">Try searching different products.</p>
+              </div>
+            <%}%>
+        
           </div>
-          <%})%>
-          <%}else{%>
-            <div class="shadow-none p-3 mb-5 bg-light rounded jumbotron">
-                <h1 class="display-4">No products found</h1>
-                <p class="lead">Try searching different products.</p>
-            </div>
-          <%}%>
-      
-        </div>
 
-        <!-- PAGINATION -->
-        <ul class="pagination">
-          <span>1</span>
-          <span>2</span>
-          <span class="icon">››</span>
-          <span class="last">Last »</span>
-        </ul>
-      </div>
+          <!-- PAGINATION -->
+          <ul class="pagination">
+            <span>1</span>
+            <span>2</span>
+            <span class="icon">››</span>
+            <span class="last">Last »</span>
+          </ul>
+        </div>
     </div>
   </section>
 
