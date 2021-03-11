@@ -43,24 +43,13 @@
               <%})%>
           </div>
 
-          <!-- <div>
-            <div class="block-title">
-              <h3>Brands</h3>
-            </div>
-            <ul class="block-content">
-              <li>
-                <input type="checkbox" name="" id="">
-                <label for="">
-                  <span>Gucci</span>
-                </label>
-              </li>
-            </ul>
-          </div> -->
+
         </div>
 
-        <div class="col-3-of-4">
-          <p>Showing results for "<%=name%>"</p>
-          <div class="item">
+        <div class="col-3-of-4" >
+          <h2>Showing results for "<%=name%>"</h2>
+          <div style="display: flex; align-items: center;">
+          <div class="item" style="padding: 1em;">
             <input type="hidden" name="search" id="name" value="<%=name%>"></input>
             <label for="sort-by"  style="color: #457dff;" >Sort By</label>
             <select name="sortby" id="sort-by">
@@ -68,15 +57,18 @@
               <option value="number">Price</option>
             </select>
           </div>
-          <div class="item">
+          <div class="item" style="padding: 1em;">
             <label for="order-by" style="color: #457dff;">Order</label>
             <select name="orderby" id="sort-by">
               <option value="ASC" selected="selected">ASC</option>
               <option value="DESC">DESC</option>
             </select>
           </div>
-          <button>Apply</button>
+          <button class="apply-btn">Apply</button>
+        </div>
         </form>
+
+
           <div class="product-layout">
             <%if(products.length > 0){%>
             <%products.forEach(function(product){%>
