@@ -1,4 +1,104 @@
-<%products.forEach(function(product){%>
-<h1><%= product.itemname %></h1>
-<%})%>
-<a href="/dashboard">Dashboard</a>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/3bb9d2c9bc.js" crossorigin="anonymous"></script>
+  <!-- Glidejs -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.css">
+
+  <!-- Custom StyleSheet -->
+  <link rel="stylesheet" href="../../public/css/home.css" />
+  <link rel="stylesheet" href="../../public/css/wishlist.css" />
+</head>
+
+<body>
+
+  <%- include("../partials/nav.ejs") %>
+
+  <section class="section promotion">
+
+      <div class="shopping-cart">
+        <!-- Title -->
+        <div class="title-wishlist">
+          Wishlist
+        </div>
+  
+        <!-- Product #1 -->
+        <div class="item">
+          <div class="buttons">
+            <span class="delete-btn"></span>
+           
+          </div>
+  
+          <div class="image">
+            <img src="../../public/img/item-1.png" alt="" />
+          </div>
+  
+          <div class="description">
+            <span>Common Projects</span>
+            <span>Bball High</span>
+            <span>White</span>
+          </div>
+  
+          <div class="quantity">
+           <div class="total-price">Rs. 370</div>
+          </div>
+  
+          <button type="submit" class="  btn-wishlist-cart"><i class="fas fa-shopping-cart"></i></button>
+        </div>
+  
+        <!-- Product #2 -->
+        <div class="item">
+          <div class="buttons">
+            <span class="delete-btn"></span>
+
+          </div>
+  
+          <div class="image">
+            <img src="../../public/img/item-2.png" alt=""/>
+          </div>
+  
+          <div class="description">
+            <span>Maison Margiela</span>
+            <span>Future Sneakers</span>
+            <span>White</span>
+          </div>
+  
+          <div class="quantity">
+           <div class="total-price">Rs. 370</div>
+          </div>
+  
+          <button type="submit" class="  btn-wishlist-cart"><i class="fas fa-shopping-cart"></i></button>
+        </div>
+  
+        <!-- Product #3 -->
+        <div class="item">
+          <div class="buttons">
+            <span class="delete-btn"></span>
+          </div>
+  
+          <div class="image">
+            <img src="../../public/img/item-3.png" alt="" />
+          </div>
+  
+          <div class="description">
+            <span>Our Legacy</span>
+            <span>Brushed Scarf</span>
+            <span>Brown</span>
+          </div>
+  
+          <div class="quantity">
+           <div class="total-price">Rs. 870</div>
+          </div>
+  
+          <button type="submit" class="  btn-wishlist-cart "><i class="fas fa-shopping-cart"></i></button>
+        </div>
+      </div>    
+
+  </section>
+
+  <%- include("../partials/allfooter.ejs") %>
