@@ -25,78 +25,48 @@
         <!-- Title -->
         <div class="title-wishlist">
           Wishlist
-        </div>
-  
-        <!-- Product #1 -->
-        <div class="item">
-          <div class="buttons">
-            <span class="delete-btn"></span>
-           
-          </div>
-  
-          <div class="image">
-            <img src="../../public/img/item-1.png" alt="" />
-          </div>
-  
-          <div class="description">
-            <span>Common Projects</span>
-            <span>Bball High</span>
-            <span>White</span>
-          </div>
-  
-          <div class="quantity">
-           <div class="total-price">Rs. 370</div>
-          </div>
-  
-          <button type="submit" class="  btn-wishlist-cart"><i class="fas fa-shopping-cart"></i></button>
-        </div>
-  
-        <!-- Product #2 -->
-        <div class="item">
-          <div class="buttons">
-            <span class="delete-btn"></span>
+        </div>  
 
+        <!-- Products -->
+        <%if(products.length > 0){%>
+          <%products.forEach(function(product){%>
+          <div class="item">
+            <div class="buttons">
+              <form action="/wishlist/remove/<%=currentUser._id%>/<%=product.item%>" method="POST">
+                <button class="btn-remove">X</button>
+              </form>
+            </div>
+    
+            <div class="image" style="height: 50px; width: 50px;">
+              <img src="<%=product.image%>" alt="" />
+            </div>
+    
+            <div class="description">
+              <span><%=product.itemname%></span>
+            </div>
+    
+            <div class="quantity">
+            <div class="total-price"><%=product.price%></div>
+            </div>
+            
+            <form method="POST" action="/cart/add/<%= product.item%>">
+              <div class="form-group">
+                <input type="hidden" name="product_id" id="quantity" value="<%= product.item %>"></input>
+                <input type="hidden" name="quantity" id="quantity" value="1"></input>
+                <input type="hidden" name="price" id="priceHidden" value="<%= product.price %>"></input>
+                <input type="hidden" name="discount" id="discount" value="<%= product.discount %>"></input>
+                <input type="hidden" name="image" id="image" value="<%= product.image %>"></input>
+                <input type="hidden" name="name" id="name" value="<%= product.itemname %>"></input>
+              </div>
+              <button type="submit" class="  btn-wishlist-cart "><i class="fas fa-shopping-cart"></i></button>
+            </form>
           </div>
-  
-          <div class="image">
-            <img src="../../public/img/item-2.png" alt=""/>
+          <%})%>
+        <%}else{%>
+          <div class="shadow-none p-3 mb-5 bg-light rounded jumbotron">
+              <h1 class="display-4">Your wishlist is empty.</h1>
           </div>
-  
-          <div class="description">
-            <span>Maison Margiela</span>
-            <span>Future Sneakers</span>
-            <span>White</span>
-          </div>
-  
-          <div class="quantity">
-           <div class="total-price">Rs. 370</div>
-          </div>
-  
-          <button type="submit" class="  btn-wishlist-cart"><i class="fas fa-shopping-cart"></i></button>
-        </div>
-  
-        <!-- Product #3 -->
-        <div class="item">
-          <div class="buttons">
-            <span class="delete-btn"></span>
-          </div>
-  
-          <div class="image">
-            <img src="../../public/img/item-3.png" alt="" />
-          </div>
-  
-          <div class="description">
-            <span>Our Legacy</span>
-            <span>Brushed Scarf</span>
-            <span>Brown</span>
-          </div>
-  
-          <div class="quantity">
-           <div class="total-price">Rs. 870</div>
-          </div>
-  
-          <button type="submit" class="  btn-wishlist-cart "><i class="fas fa-shopping-cart"></i></button>
-        </div>
+        <%}%>
       </div>    
 
   </section>
