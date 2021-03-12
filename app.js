@@ -13,7 +13,10 @@ var express                 = require("express"),
     wishListroute           = require("./routes/wishlist.routes"),
     orderroute              = require("./routes/order.routes"),
     contactusroute          = require("./routes/contactus.routes"),
-    saleroute               = require("./routes/sale.routes")
+    saleroute               = require("./routes/sale.routes"),
+    aboutusroute            = require("./routes/aboutus.routes"),
+    tncroute                = require("./routes/terms&conditions.routes"),
+    privacypolicyroute      = require("./routes/privacypolicy.routes")
     
 var app = express();
 var port=4000;
@@ -60,6 +63,9 @@ app.use("/wishlist", wishListroute);
 app.use("/order", orderroute);
 app.use("/contactus", contactusroute);
 app.use("/sale", saleroute);
+app.use("/aboutus", aboutusroute);
+app.use("/terms&conditions", tncroute);
+app.use("/privacypolicy", privacypolicyroute);
 
 app.listen(port, function(){
     console.log("connected to port : ",port);
