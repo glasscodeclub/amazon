@@ -42,7 +42,7 @@ router.post("/add/:id",middlewares.isLoggedIn, function(req,res){
                 if(err)
                     console.log(err);
                 for(var i=0;i<newcart.items.length;i++)
-                    newcart.totalPrice = newcart.totalPrice + (newcart.items[i].price - (newcart.items[i].discount * newcart.items[i].price)/100);
+                    newcart.totalPrice = newcart.totalPrice + newcart.items[i].price;
                 cart = newcart;
                 cart.save();
                 no = cart.items.length;
@@ -52,7 +52,7 @@ router.post("/add/:id",middlewares.isLoggedIn, function(req,res){
             for(var i=0;i<cart.items.length;i++){
                 if(cartitem.item == cart.items[i].item){
                     cart.items[i].quantity = cart.items[i].quantity + cartitem.quantity;
-                    cart.items[i].price = cart.items[i].price + cartitem.price - (cartitem.price * cartitem.discount)/100;
+                    cart.items[i].price = cart.items[i].price + cartitem.price;
                     cart.totalPrice = cart.totalPrice + cartitem.price; 
                     finditem = true;
                 }
