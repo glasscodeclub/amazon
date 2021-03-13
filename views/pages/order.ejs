@@ -27,7 +27,7 @@
 
       <section class="section products  sp" >
         <div class="products-layout container">
-          <div class="col-1-of-4"> 
+          <!-- <div class="col-1-of-4"> 
             <div>
               <div class="block-title">
                 <h3>Orders</h3>
@@ -63,21 +63,18 @@
             </div>
               <a href="" class="apply-btnn" >Apply</a>
 
-          </div>
+          </div> -->
           
-          <div class="col-3-of-4">
-
-    
+          <div class="col-4-of-4">
             <div class="product-layout">
-
-              
                 <section class="root">
+                  <%orders.forEach(function(order){%>
                   <figure>
-                    <img src="https://images.melorra.com/image/upload/h_350,w_350,f_auto,fl_progressive/v1571040732/live-melorra/dev/catalogue/images/TG/OPT/580/W19WTG16F_C_580.jpg" alt="">
+                    <img src="<%= order.items[0].image%>" alt="">
                     <figcaption>
-                      <h4>Product name</h4>
-                      <h6>Quantity- 1</h6>
-                      <h2>₹ 23,456</h2>
+                      <!-- <h4>Product name</h4> -->
+                      <h4>Quantity <%= order.items.length%></h4>
+                      <h2>₹ <%=order.totalPrice%></h2>
                     </figcaption>
                   </figure>
                   <div class="order-track">
@@ -88,11 +85,11 @@
                       </div>
                       <div class="order-track-text">
                         <p class="order-track-text-stat">Order Received</p>
-                        <span class="order-track-text-sub">21st November, 2019</span>
+                        <span class="order-track-text-sub"><%=orderDate%></span>
                       </div>
-                    </div>
+                    </div> 
                 
-                    <div class="order-track-step">
+                    <!-- <div class="order-track-step">
                       <div class="order-track-status">
                         <span class="order-track-status-dot"></span>
                         <span class="order-track-status-line"></span>
@@ -101,15 +98,15 @@
                         <p class="order-track-text-stat">Order Dispatched</p>
                         <span class="order-track-text-sub">21st November, 2019</span>
                       </div>
-                    </div>
+                    </div> -->
                     <div class="order-track-step">
                       <div class="order-track-status">
                         <span class="order-track-status-dot"></span>
                         <span class="order-track-status-line"></span>
                       </div>
                       <div class="order-track-text">
-                        <p class="order-track-text-stat">Order Deliverd</p>
-                        <span class="order-track-text-sub">21st November, 2019</span>
+                        <p class="order-track-text-stat"><%=status%></p>
+                        <span class="order-track-text-sub"><%=deliveryDate%></span>
                       </div>
                     </div>
                   </div>
@@ -118,19 +115,17 @@
 
                   <div class=" RowBox">
                     <div class="col">
-                        <p class="text-muted"><span class="idd">Order ID :</span>  <span class="dark">1222528743</span></p>
-                        <p class="text-muted"><span class="idd">Place On :</span> <span class="dark">12/03/2020</span> </p>
-                    </div>
-                    <div class="flex-col">
-                        <h6 class="ml-auto mr-3"> <a href="#">View Details</a> </h6>
+                        <p class="text-muted"><span class="idd">Order ID :</span>  <span class="dark"><%=order._id%></span></p>
+                        <p class="text-muted"><span class="idd">Place On :</span> <span class="dark"><%=orderDate%></span> </p>
                     </div>
                 </div>
 
            
                 <div class="div-btn">
-                <a href="" class="OH-btnn" >Cancel</a>
+                <a href="" class="OH-btnn" >View Details</a>
                 <a href="" class="OH-btnn" >Buy Again</a>
               </div>
+              <%})%>
                 </section>
             <!-- PAGINATION -->
             <br>
