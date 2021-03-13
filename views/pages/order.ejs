@@ -1,1 +1,146 @@
-<h1>orders page</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/3bb9d2c9bc.js" crossorigin="anonymous"></script>
+  <!-- Glidejs -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.css">
+
+  <!-- Custom StyleSheet -->
+  <link rel="stylesheet" href="../../public/css/home.css" />
+  <linK rel="stylesheet" href="../../public/css/order.css">
+
+  
+</head>
+
+<body>
+
+  <%- include("../partials/nav.ejs") %>
+  <section class="section promotion" >
+    <div class="history-page">
+      <h1 class="history-page__title">Order History</h1>
+      <hr />
+
+      <section class="section products  sp" >
+        <div class="products-layout container">
+          <div class="col-1-of-4"> 
+            <div>
+              <div class="block-title">
+                <h3>Orders</h3>
+              </div>
+    
+              <ul class="block-content">
+                <li>
+                  <input type="checkbox" name="" id="">
+                  <label for="">
+                    <span>Current Orders</span>
+                    <small>(10)</small>
+                  </label>
+                </li>
+    
+                <li>
+                  <input type="checkbox" name="" id="">
+                  <label for="">
+                    <span>Buy Again</span>
+                    <small>(7) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </small>
+                  </label>
+                </li>
+    
+                <li>
+                  <input type="checkbox" name="" id="">
+                  <label for="">
+                    <span>Cancelled Orders</span>
+                    <small>(3)</small>
+                  </label>
+                </li>
+    
+
+              </ul>
+            </div>
+              <a href="" class="apply-btnn" >Apply</a>
+
+          </div>
+          
+          <div class="col-3-of-4">
+
+    
+            <div class="product-layout">
+
+              
+                <section class="root">
+                  <figure>
+                    <img src="https://images.melorra.com/image/upload/h_350,w_350,f_auto,fl_progressive/v1571040732/live-melorra/dev/catalogue/images/TG/OPT/580/W19WTG16F_C_580.jpg" alt="">
+                    <figcaption>
+                      <h4>Product name</h4>
+                      <h6>Quantity- 1</h6>
+                      <h2>₹ 23,456</h2>
+                    </figcaption>
+                  </figure>
+                  <div class="order-track">
+                    <div class="order-track-step">
+                      <div class="order-track-status">
+                        <span class="order-track-status-dot"></span>
+                        <span class="order-track-status-line"></span>
+                      </div>
+                      <div class="order-track-text">
+                        <p class="order-track-text-stat">Order Received</p>
+                        <span class="order-track-text-sub">21st November, 2019</span>
+                      </div>
+                    </div>
+                
+                    <div class="order-track-step">
+                      <div class="order-track-status">
+                        <span class="order-track-status-dot"></span>
+                        <span class="order-track-status-line"></span>
+                      </div>
+                      <div class="order-track-text">
+                        <p class="order-track-text-stat">Order Dispatched</p>
+                        <span class="order-track-text-sub">21st November, 2019</span>
+                      </div>
+                    </div>
+                    <div class="order-track-step">
+                      <div class="order-track-status">
+                        <span class="order-track-status-dot"></span>
+                        <span class="order-track-status-line"></span>
+                      </div>
+                      <div class="order-track-text">
+                        <p class="order-track-text-stat">Order Deliverd</p>
+                        <span class="order-track-text-sub">21st November, 2019</span>
+                      </div>
+                    </div>
+                  </div>
+                      <hr class="separate">
+
+
+                  <div class=" RowBox">
+                    <div class="col">
+                        <p class="text-muted"><span class="idd">Order ID :</span>  <span class="dark">1222528743</span></p>
+                        <p class="text-muted"><span class="idd">Place On :</span> <span class="dark">12/03/2020</span> </p>
+                    </div>
+                    <div class="flex-col">
+                        <h6 class="ml-auto mr-3"> <a href="#">View Details</a> </h6>
+                    </div>
+                </div>
+
+           
+                <div class="div-btn">
+                <a href="" class="OH-btnn" >Cancel</a>
+                <a href="" class="OH-btnn" >Buy Again</a>
+              </div>
+                </section>
+            <!-- PAGINATION -->
+            <br>
+          </div>
+        
+
+          
+        </div>
+      </section>
+
+    </div> 
+  </section>
+  <%- include("../partials/allfooter.ejs") %>
