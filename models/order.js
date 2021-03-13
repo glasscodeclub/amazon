@@ -6,13 +6,22 @@ var orderSchema = new mongoose.Schema({
     ref: 'User'
           },
   orders: [{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Cart'
+    totalPrice: { type: Number, default: 0},
+    items: [{
+      item: { 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Product'
+      },
+      quantity: { type: Number, default: 1},
+      price: { type: Number, default: 0},
+      image: String,
+      itemname: String,
+    }]
   }],
   isPayment: Boolean,
   status: String,
-  orderDate: Date,
-  deliveryDate: Date
+  orderDate: String,
+  deliveryDate: String
 });
 
 module.exports = mongoose.model('Order', orderSchema);
