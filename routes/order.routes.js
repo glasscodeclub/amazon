@@ -16,4 +16,7 @@ router.get("/", middlewares.isLoggedIn, function(req,res){
     });
 });
 
+router.get("/viewdetails",middlewares.isLoggedIn, function(req,res){
+    res.render("./pages/viewdetails");
+})
 module.exports = router;
