@@ -67,6 +67,7 @@
           
           <div class="col-4-of-4">
             <div class="product-layout">
+              <%if(orders.length > 0){%>
                 <section class="root">
                   <%orders.forEach(function(order){%>
                   <figure>
@@ -122,11 +123,16 @@
 
            
                 <div class="div-btn">
-                <a href="" class="OH-btnn" >View Details</a>
+                <a href="/order/viewdetails" class="OH-btnn" >View Details</a>
                 <a href="" class="OH-btnn" >Buy Again</a>
               </div>
               <%})%>
                 </section>
+                <%}else{%>
+                  <div class="shadow-none p-3 mb-5 bg-light rounded jumbotron">
+                      <h1 class="display-4">No orders placed.</h1>
+                  </div>
+                <%}%>
             <!-- PAGINATION -->
             <br>
           </div>
