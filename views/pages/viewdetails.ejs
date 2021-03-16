@@ -33,34 +33,82 @@
         <div class="d-flex">
 
                     <div class="form-steps my-nav">
-						<div class="form-steps__item form-steps__item--active">
-							    <div class="form-steps__item-content">
-                    <span class="form-steps__item-icon"></span>
-								<span class="form-steps__item-text">Order Placed</span>
-                                <div class="form-steps__item-text"><%=order.orderDate%></div>
-							</div>
+                      <%if(order.status == "Delivered"){%>
+                        <div class="form-steps__item form-steps__item--completed">
+                          <div class="form-steps__item-content">
+                            <span class="form-steps__item-icon">1</span>
+                        <span class="form-steps__item-text">Order Placed</span>
+                        <div class="form-steps__item-text"><%=order.orderDate%></div>
+                      </div>
+                    </div>
+                        <div class="form-steps__item form-steps__item--completed">
+                          <div class="form-steps__item-content">
+                            <span class="form-steps__item-icon">2</span>
+                            <span class="form-steps__item-line"></span>
+                            <span class="form-steps__item-text">On The Way</span>
+                          </div>
+                          </div>
 
-						</div>
-                      <%if(order.status != "Delivered"){%>
-                        <div class="form-steps__item ">
+                          <div class="form-steps__item form-steps__item--completed">
                             <div class="form-steps__item-content">
-                              <span class="form-steps__item-icon"></span>
+                              <span class="form-steps__item-icon">3</span>
                               <span class="form-steps__item-line"></span>
-                              <span class="form-steps__item-text">On The Way</span>
-                              <div class="form-steps__item-text">Expected - <%=order.deliveryDate%></div>
-                            </div>
-                        </div> 
-                      <%}%>
-
-                          <div class="form-steps__item">
-                            <div class="form-steps__item-content">
-                              <span class="form-steps__item-icon"></span>
-                              <span class="form-steps__item-line"></span>
-                              <span class="form-steps__item-text"><%=order.status%></span>
+                              <span class="form-steps__item-text">Delivery</span>
                                               <div class="form-steps__item-text"><%=order.deliveryDate%></div>
                             </div>
                           </div>
+                          <%}else if(order.status == "On The Way"){%>
+                            <div class="form-steps__item form-steps__item--completed">
+                              <div class="form-steps__item-content">
+                                <span class="form-steps__item-icon">1</span>
+                            <span class="form-steps__item-text">Order Placed</span>
+                            <div class="form-steps__item-text"><%=order.orderDate%></div>
+                          </div>
+                        </div>
+                            <div class="form-steps__item form-steps__item--active">
+                              <div class="form-steps__item-content">
+                                <span class="form-steps__item-icon">2</span>
+                                <span class="form-steps__item-line"></span>
+                                <span class="form-steps__item-text">On The Way</span>
+                              </div>
+                              </div>
+    
+                              <div class="form-steps__item">
+                                <div class="form-steps__item-content">
+                                  <span class="form-steps__item-icon">3</span>
+                                  <span class="form-steps__item-line"></span>
+                                  <span class="form-steps__item-text">Delivery</span>
+                                  <div class="form-steps__item-text"><%=order.deliveryDate%></div>
+                                </div>
+                              </div>
+                      <%}else{%>
 
+                        <div class="form-steps__item form-steps__item--active">
+                          <div class="form-steps__item-content">
+                            <span class="form-steps__item-icon">1</span>
+                        <span class="form-steps__item-text">Order Placed</span>
+                        <div class="form-steps__item-text"><%=order.orderDate%></div>
+                      </div>
+                    </div>
+
+                        <div class="form-steps__item">
+                          <div class="form-steps__item-content">
+                            <span class="form-steps__item-icon">2</span>
+                            <span class="form-steps__item-line"></span>
+                            <span class="form-steps__item-text">On The Way</span>
+                          </div>
+                          </div>
+
+                          <div class="form-steps__item">
+                            <div class="form-steps__item-content">
+                              <span class="form-steps__item-icon">3</span>
+                              <span class="form-steps__item-line"></span>
+                              <span class="form-steps__item-text">Delivery</span>
+                                              <div class="form-steps__item-text"><%=order.deliveryDate%></div>
+                            </div>
+                          </div>
+                        <%}%>
+                      
                                 <!-- REPLACE THIS CODE WHEN THAT LINE IS COMPLETE  -->
 
                                 <!-- ACTIVE is current completed gives tick and else normal  -->
