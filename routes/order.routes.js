@@ -33,4 +33,13 @@ router.get("/viewdetails/:order_id",middlewares.isLoggedIn, function(req,res){
         res.render("./pages/viewdetails",{order:foundorder});
     });
 })
+
+router.get("/cancel", middlewares.isLoggedIn, function(req,res){
+        res.render("./pages/cancelorder");
+});
+
+router.get("/return", middlewares.isLoggedIn, function(req,res){
+        res.render("./pages/returnorder");
+});
+
 module.exports = router;

@@ -3,10 +3,6 @@ var router = express.Router();
 var userlib = require("../lib/user.lib")
 var middlewares = require("../middlewares/auth");
 
-router.get("/update", middlewares.isLoggedIn, function(req,res){
-    res.render("./pages/updateprofile");
-});
-
 router.get("/:user_id", middlewares.isLoggedIn, function(req,res){
     let filter = {_id: req.params.user_id}
     userlib.findbyId(filter, function(err, user){
