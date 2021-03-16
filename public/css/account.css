@@ -1,0 +1,160 @@
+.history-page {
+    background-color: #fff;
+    width: 100%;
+    height: auto;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+  }
+  
+  .history-page__title {
+    font-size: xx-large;
+    color: rgb(94, 169, 255);
+  }
+  
+  .hrr {
+    margin-top: 1em;
+    color: #b4b3b3;
+    width: 80%;
+    margin-left: 4em;
+  }
+
+
+  
+
+  @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+
+
+
+
+
+.wrapper-account{
+  margin-top: 3em; 
+  width: 50%;
+  display: flex;
+  box-shadow: 0 1px 20px 0 rgba(69,90,100,.08);
+  margin-left: 25%;
+  
+}
+
+.wrapper-account .left{
+  width: 35%;
+  background: linear-gradient(to right,#80adf1,#b8e5ff);
+  padding: 30px 25px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  text-align: center;
+  color: #fff;
+}
+
+.wrapper-account .left img{
+  border-radius: 5px;
+  margin-bottom: 10px;
+  height: 80%;
+  width: 100%;
+}
+
+.wrapper-account .left h4{
+  margin-bottom: 10px;
+}
+
+.wrapper-account .left p{
+  font-size: 12px;
+}
+
+.wrapper-account .right{
+  width: 65%;
+  background: #fff;
+  padding: 30px 25px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.wrapper-account .right .info,
+.wrapper-account .right .projects{
+  margin-bottom: 25px;
+}
+
+.wrapper-account .right .info h3,
+.wrapper-account .right .projects h3{
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e0e0e0;
+    color: #353c4e;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+.wrapper-account .right .info_data,
+.wrapper-account .right .projects_data{
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrapper-account .right .info_data .data,
+.wrapper-account .right .projects_data .data{
+  width: 45%;
+}
+
+.wrapper-account .right .info_data .data h4,
+.wrapper-account .right .projects_data .data h4{
+    color: #353c4e;
+    margin-bottom: 5px;
+}
+
+.wrapper-account .right .info_data .data p,
+.wrapper-account .right .projects_data .data p{
+  font-size: 13px;
+  margin-bottom: 10px;
+  color: #919aa3;
+}
+
+
+
+.wrapper-account .right .info,
+.wrapper-account .right .payment{
+  margin-bottom: 25px;
+}
+
+.wrapper-account .right .info h3,
+.wrapper-account .right .payment h3{
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e0e0e0;
+    color: #353c4e;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+
+.wrapper-account .right 
+.wrapper-account .right .payment_data{
+  display: block;
+  
+}
+
+.wrapper-account .right .info_data .data,
+.wrapper-account .right .payment_data .data{
+  width: 100%;
+}
+
+.wrapper-account .right .info_data .data h4,
+.wrapper-account .right .payment_data .data h4{
+    color: #353c4e;
+    margin-bottom: 5px;
+}
+
+.wrapper-account .right .info_data .data p,
+.wrapper-account .right .payment_data .data p{
+  font-size: 13px;
+  margin-bottom: 10px;
+  color: #919aa3;
+}
+
+.color-w{
+    color: cadetblue !important;
+}
+
+
+
+
+
