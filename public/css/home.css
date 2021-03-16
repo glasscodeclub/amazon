@@ -750,6 +750,8 @@ font-family: "Montserrat-Regular";
   }
 }
 
+
+
 /* PRODUCTS */
 .section .product-layout {
   display: grid;
@@ -1395,7 +1397,7 @@ th:last-child {
 .product-detail .details {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
-  gap: 7rem;
+  gap: 4rem;
 }
 
 .product-detail .left {
