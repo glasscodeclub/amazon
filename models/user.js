@@ -3,7 +3,22 @@ var passportLocalMongoose = require("passport-local-mongoose");
 
 var UserSchema = new mongoose.Schema({
     username:String,
-    password:String
+    password:String,
+    firstname:{type:String, default:null},
+    lastname:{type:String, default:null},
+    email:[{type:String, default:null}],
+    phone:[{type:String, default:null}],
+    address:[{
+        line:{type:String, default:null},
+        city:{type:String, default:null},
+        country:{type:String, default:null},
+        postal:{type:String, default:null}
+    }],
+    cards:[{
+        cardno:{type:String, default:null},
+        expirydate:{type:String, default:null},
+        holdername:{type:String, default:null}
+    }]
 });
 
 UserSchema.plugin(passportLocalMongoose);

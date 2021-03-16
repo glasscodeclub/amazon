@@ -12,16 +12,26 @@ var orderSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'Product'
       },
-      quantity: { type: Number, default: 1},
+      quantity: { type: Number, default: 0},
       price: { type: Number, default: 0},
-      image: String,
-      itemname: String,
-    }]
-  }],
-  isPayment: Boolean,
-  status: String,
-  orderDate: String,
-  deliveryDate: String
+      image: {type:String, default:null},
+      itemname: {type:String, default:null}
+    }],
+    payment: {type:String, default:null},
+    status: {type:String, default:null},
+    orderDate: {type:String, default:null},
+    deliveryDate: {type:String, default:null},
+    address: {
+      line:{type:String, default:null},
+      city:{type:String, default:null},
+      country:{type:String, default:null},
+      postal:{type:String, default:null},
+      firstname:{type:String, default:null},
+      lastname:{type:String, default:null},
+      email:{type:String, default:null},
+      phone:{type:String, default:null}
+    }
+  }]
 });
 
 module.exports = mongoose.model('Order', orderSchema);
