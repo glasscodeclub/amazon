@@ -28,11 +28,12 @@
       <h1 class="history-page__title">User Account</h1>
       <hr class="hrr" />
 
-
+<%users.forEach(function(user){%>
 <div class="wrapper-account">
     <div class="left">
         <img src="../../public/img/man-2-512.png" alt="user" width="100">
-        <h4>Fname Lname</h4>
+        <h4><%=user.firstname%> <%=user.lastname%></h4>
+        <a>Update</a>
 
     </div>
     <div class="right">
@@ -41,65 +42,60 @@
             <div class="info_data">
                  <div class="data">
                     <h4 class="color-w" >Email</h4>
-                    <p>abc@gmail.com</p>
+                    <p><%=user.email%></p>
                  </div>
               
                  <div class="data">
                    <h4 class="color-w" >Phone</h4>
-                    <p>0001-212121</p>
+                   <% user.phone.forEach(function(phone){%>
+                    <p><%=phone%></p>
+                   <%})%>
               </div>
             </div>
-          
-
         </div>
       
       <div class="projects">
             <h3 class="color-w" >Address</h3>
-            <div class="projects_data">
+
+              <% for(var i=0;i<user.address.length;i++){%>
+                <div class="projects_data">
                  <div class="data">
                     <h4 class="color-w" >Address</h4>
-                    <p>Lorem ipsum dolor sit amet.</p>
+                    <p><%=user.address[i].line%>.</p>
                  </div>
                  <div class="data">
                    <h4 class="color-w" >Country</h4>
-                    <p>India</p>
+                    <p><%=user.address[i].country%></p>
               </div>
             </div>
-        <div class="projects_data">
-                 <div class="data">
-                    <h4 class="color-w" >City</h4>
-                    <p>Delhi</p>
-                 </div>
-                 <div class="data">
-                   <h4 class="color-w" >Postal Code</h4>
-                    <p>110043</p>
-              </div>
-            </div>
+            <div class="projects_data">
+                    <div class="data">
+                        <h4 class="color-w" >City</h4>
+                        <p><%=user.address[i].city%></p>
+                    </div>
+                    <div class="data">
+                      <h4 class="color-w" >Postal Code</h4>
+                        <p><%=user.address[i].postal%></p>
+                  </div>
+                </div>
+                <%}%>
         </div>
       
       <div class="payment">
             <h3 class="color-w" >Payment</h3>
             <div class="payment_data">
+              <% for(var i=0;i<user.cards.length;i++){%>
                  <div class="data">
-                    <h4 class="color-w" >Card 1</h4>
-                    <p>Lorem ipsum dolor sit amet.</p>
+                    <h4 class="color-w" >Card <%=i+1%></h4>
+                    <p><%=user.cards[i].cardno%></p>
                  </div>
-              <div class="data">
-                    <h4 class="color-w" >Card 2</h4>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                 </div>
-              
-              
-                
+              <%}%>
             </div>
 
         </div>
-      
-
 </div>
 </div>
-      
-
+<%})%>
 
 
       

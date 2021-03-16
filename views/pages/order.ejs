@@ -86,7 +86,7 @@
                       </div>
                       <div class="order-track-text">
                         <p class="order-track-text-stat">Order Received</p>
-                        <span class="order-track-text-sub"><%=orderDate%></span>
+                        <span class="order-track-text-sub"><%=order.orderDate%></span>
                       </div>
                     </div> 
                 
@@ -106,8 +106,8 @@
                         <span class="order-track-status-line"></span>
                       </div>
                       <div class="order-track-text">
-                        <p class="order-track-text-stat"><%=status%></p>
-                        <span class="order-track-text-sub"><%=deliveryDate%></span>
+                        <p class="order-track-text-stat"><%=order.status%></p>
+                        <span class="order-track-text-sub"><%=order.deliveryDate%></span>
                       </div>
                     </div>
                   </div>
@@ -117,13 +117,13 @@
                   <div class=" RowBox">
                     <div class="col">
                         <p class="text-muted"><span class="idd">Order ID :</span>  <span class="dark"><%=order._id%></span></p>
-                        <p class="text-muted"><span class="idd">Place On :</span> <span class="dark"><%=orderDate%></span> </p>
+                        <p class="text-muted"><span class="idd">Place On :</span> <span class="dark"><%=order.orderDate%></span> </p>
                     </div>
                 </div>
 
            
                 <div class="div-btn">
-                <a href="/order/viewdetails" class="OH-btnn" >View Details</a>
+                <a href="/order/viewdetails/<%=order._id%>" class="OH-btnn" >View Details</a>
                 <a href="" class="OH-btnn" >Buy Again</a>
               </div>
               <%})%>
