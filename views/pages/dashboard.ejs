@@ -20,36 +20,21 @@
 
   <%- include("../partials/nav.ejs") %>
 
-  <!-- <div class="hero">
-    <div class="left">
-      <span>Exclusive Sales</span>
-      <h1>UP TO 50% OFF ON SALES</h1>
-      <small>Get all exclusive offers for the season</small>
-      <a href="/sale">View Collection </a>
-    </div>
-    <div class="right">
-      <img src="../../public/img/hero.png" alt="" />
-    </div>
-  </div> -->
-<!-- /////////////////////////////////////////HERE///////////////////////////// -->
+  <!--  HERO -->
 <section class="hero">
   <div class="glide glide1" id="glide1">
     <div class="glide__track" data-glide-el="track">
       <ul class="glide__slides glide__hero">
-
         <li class="glide__slide">
           <div class="banner">
             <div class="banner-content">
               <span>Exclusive Sales</span>
               <h1>UP TO 50% OFF ON SALES</h1>
               <h3>Get all exclusive offers for the season</h3>
-             
               <a href="/sale">View Collection </a>
-      
             </div>
             <img src="../../public/img/vert1.png" class="special_01" alt="">
         </li>
-
         <li class="glide__slide">
           <div class="banner banner1">
             <div class="banner-content">
@@ -62,7 +47,6 @@
             <img src="../../public/img/vert2.png" class="special_02" alt="">
           </div>
         </li>
-
         <li class="glide__slide">
           <div class="banner">
             <div class="banner-content">
@@ -75,10 +59,8 @@
             <img src="../../public/img/vert3.png" class="special_03" alt="">
           </div>
         </li>
-
       </ul>
     </div> 
-
     <!-- Arrows -->
     <div class="glide__arrows" data-glide-el="controls">
       <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><i class="fas fa-arrow-left"></i></button>
@@ -96,23 +78,16 @@
       <h2>Shop Collections</h2>
       <span>Select from the premium product and save plenty money</span>
     </div>
-
     <div class="promotion-layout container">
       <%categories.forEach(function(category){%>
-        
         <div class="promotion-item">
             <img src="<%= category.image %>" alt="" />
             <div class="promotion-content">
-          
                 <h3><%= category.name %></h3>
-            
-            
               <a href="/dashboard/<%= category._id%>">SHOP NOW</a>
             </div>
           </div>
         <% }) %>
-
-      
     </div>
   </section>
 
@@ -122,15 +97,12 @@
       <h2>Today's Deals</h2>
       <span>Select from the premium product brands and save plenty money</span>
     </div>
-
     <div class="product-layout">
-
         <%data.forEach(function(product){%>
             <div class="product">
             <div class="img-container">
                 <img src="<%=product.imageURL%>" alt="">
                 <div class="addCart">
-                    
                       <form method="POST" action="/cart/add/<%= product._id%>">
                         <div class="form-group">
                           <input type="hidden" name="product_id" id="quantity" value="<%= product._id %>"></input>
@@ -142,9 +114,7 @@
                         </div>
                           <button type="submit" class="btn btn-cart btn-primary btn-lg"><i class="fa fa-shopping-cart"></i></button>
                       </form>
-
                   </div>
-        
                   <ul class="side-icons side-icons-dashboard">
                     <span class="dash"><i class="fas fa-search"></i></span>
                     <span>
@@ -162,7 +132,6 @@
                     </span>
                     <span class="dash"><i class="fas fa-sliders-h"></i></span>
                   </ul>
-
                   <div class="bottom">
                     <a href=""><%=product.name%></a>
                     <div class="price">
@@ -202,3 +171,12 @@
 
 
   <%- include("../partials/allfooter.ejs") %>
+  <!-- Glidejs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
+
+<!-- Custom Scripts -->
+<script src="../../public/js/home.js"></script>
+<script src="../../public/js/slider.js"></script>
+</body>
+
+</html>

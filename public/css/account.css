@@ -1,4 +1,4 @@
-.history-page {
+.history-page{
     background-color: #fff;
     width: 100%;
     height: auto;
@@ -20,9 +20,9 @@
 
 
 
-  /*
-* user card
-*/
+
+/* user card */
+
 
 .cssui-usercard{
   box-sizing: border-box;
@@ -152,36 +152,6 @@
   color: #fff;  
 }
 
-.cssui-icon{
-  width: 2em;
-  height: 2em;
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: contain;
-}
-
-.cssui-social{
-  display: inline-block;
-  vertical-align: middle;
-  position: relative;
-  overflow: hidden;
-}
-
-.cssui-social__name{
-  position: absolute;
-  left: -9999px;
-}
-
-.cssui-usercard__social{
-  margin-right: 1.6rem;
-  font-size: .8rem;
-}
-
-.cssui-usercard__social:last-child{
-  margin-right: 0;
-}
-
 .cssui-slider{
   position: relative;
   overflow: hidden;
@@ -296,14 +266,14 @@
 
 @media screen and (min-width: 641px) and (max-width: 980px){
 
-  html{
+  .cssui-usercard__body{
     font-size: 9px;
   }
 }
 
 @media screen and (max-width: 640px){
 
-  html{
+  .cssui-usercard__body{
     font-size: 8px;
   }
 }
@@ -323,30 +293,31 @@ a{
   text-decoration: none;
 }
 
-.footer{
-  text-align: center;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-  position: relative;
-  z-index: 5;
-}
 
-@media screen and (max-width: 640px){
 
-  .footer{
-    font-size: 1.4rem;
-  }
-}
 
-.footer__container{
-  display: flex;
-  justify-content: center;
-}
 
 .account-input{
   text-align: center;
   font-style: italic;
   color: rgb(1, 2, 27);
+}
+
+.account-input-textarea{
+  padding-left: 3px;
+  text-align: left !important;
+  font-style: italic;
+  color: rgb(1, 2, 27);
+}
+
+.update-button{
+  padding: .5em 1em  !important;
+  background-color: rgb(32, 107, 178);
+  color: aliceblue;
+  border-radius: 16px;
+  border: none;
+  font-size: large;
+
 }
 
 
