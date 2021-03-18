@@ -52,10 +52,11 @@
                 <div class="col-3-of-4">
                   <div class="product-layout">
                     <%if(orders.length > 0){%>
+                      <%orders.forEach(function(order){%>
+                        <%if(order.status != "Delivered" && order.status != "Cancelled" && order.status != "Returned"){%>
                       <section class="root">
-                        <%orders.forEach(function(order){%>
                         <figure>
-                          <img src="<%= order.items[0].image%>" alt="">
+                          <img src="../../public/img/logo.png" alt="logo">
                           <figcaption>
                             <h4>Quantity <%= order.items.length%></h4>
                             <h2>₹ <%=order.totalPrice%></h2>
@@ -88,15 +89,15 @@
                           <div class="col">
                               <p class="text-muted"><span class="idd">Order ID :</span>  <span class="dark"><%=order._id%></span></p>
                               <p class="text-muted"><span class="idd">Place On :</span> <span class="dark"><%=order.orderDate%></span> </p>
-                              <p class="text-muted"><span class="idd">Cancel Upto :</span> <span class="dark">13/04/2021</span> </p>
                           </div>
                       </div>
                       <div class="div-btn">
                       <a href="/order/viewdetails/<%=order._id%>" class="OH-btnn" >View Details</a>
-                      <a href="/order/cancel" class="OH-btnn" >Cancel</a>
+                      <a href="/order/cancel/<%=order._id%>" class="OH-btnn" >Cancel</a>
                     </div>
-                    <%})%>
+                    
                       </section>
+                      <%}})%>
                       <%}else{%>
                         <div class="shadow-none p-3 mb-5 bg-light rounded jumbotron">
                             <h1 class="display-4">No orders placed.</h1>
@@ -120,10 +121,11 @@
                 <div class="col-3-of-4">
                   <div class="product-layout">
                     <%if(orders.length > 0){%>
+                      <%orders.forEach(function(order){%>
+                      <%if(order.status == "Delivered"){%>
                       <section class="root">
-                        <%orders.forEach(function(order){%>
                         <figure>
-                          <img src="<%= order.items[0].image%>" alt="">
+                          <img src="../../public/img/logo.png" alt="logo">
                           <figcaption>
                             <h4>Quantity <%= order.items.length%></h4>
                             <h2>₹ <%=order.totalPrice%></h2>
@@ -156,14 +158,16 @@
                           <div class="col">
                               <p class="text-muted"><span class="idd">Order ID :</span>  <span class="dark"><%=order._id%></span></p>
                               <p class="text-muted"><span class="idd">Place On :</span> <span class="dark"><%=order.orderDate%></span> </p>
+                              <p class="text-muted"><span class="idd">Return Upto :</span> <span class="dark"><%=order.returnDate%></span> </p>
                           </div>
                       </div>
                       <div class="div-btn">
                       <a href="/order/viewdetails/<%=order._id%>" class="OH-btnn" >View Details</a>
                       <a href="/order/cancel" class="OH-btnn" >Buy Again</a>
                     </div>
-                    <%})%>
+                    
                       </section>
+                      <%}})%>
                       <%}else{%>
                         <div class="shadow-none p-3 mb-5 bg-light rounded jumbotron">
                             <h1 class="display-4">No orders placed.</h1>
@@ -187,10 +191,11 @@
                 <div class="col-3-of-4">
                   <div class="product-layout">
                     <%if(orders.length > 0){%>
+                      <%orders.forEach(function(order){%>
+                        <%if(order.status == "Cancelled" || order.status == "Returned"){%>
                       <section class="root">
-                        <%orders.forEach(function(order){%>
                         <figure>
-                          <img src="<%= order.items[0].image%>" alt="">
+                          <img src="../../public/img/logo.png" alt="logo">
                           <figcaption>
                             <h4>Quantity <%= order.items.length%></h4>
                             <h2>₹ <%=order.totalPrice%></h2>
@@ -228,11 +233,12 @@
                       <div class="div-btn">
                       <a href="/order/viewdetails/<%=order._id%>" class="OH-btnn" >View Details</a>
                     </div>
-                    <%})%>
+                    
                       </section>
+                      <%}})%>
                       <%}else{%>
                         <div class="shadow-none p-3 mb-5 bg-light rounded jumbotron">
-                            <h1 class="display-4">No orders placed.</h1>
+                            <h1 class="display-4">No Cancelled orders.</h1>
                         </div>
                       <%}%>
                 </div>

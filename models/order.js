@@ -21,6 +21,7 @@ var orderSchema = new mongoose.Schema({
     status: {type:String, default:null},
     orderDate: {type:String, default:null},
     deliveryDate: {type:String, default:null},
+    returnDate: {type:String, default:null},
     address: {
       line:{type:String, default:null},
       city:{type:String, default:null},
