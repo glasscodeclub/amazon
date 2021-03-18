@@ -22,7 +22,9 @@
 <body>
 
   <%- include("../partials/nav.ejs") %>
-  <section class="section promotion">
+  <%users.forEach(function(user){%>
+  <form action="/profile/update" method="POST">
+    <section class="section promotion">
       <div class="history-page">
       <h1 class="history-page__title">User Account</h1>
       <hr class="hrr" />
@@ -30,9 +32,9 @@
       <article class="cssui-usercard">
         <div class="cssui-usercard__body">
           <header class="cssui-usercard__header">
-            <img src="../../public/img/grid_1.jpg" class="cssui-usercard__avatar" alt="Avatar">
+            <img src="../../public/img/icon.png" class="cssui-usercard__avatar" alt="Avatar">
             <div class="cssui-usercard__header-info">
-              <h3 class="cssui-usercard__name">Naveen<span class="cssui-usercard__name-label">Yadav</span></h3>
+              <h3 class="cssui-usercard__name"><%-user.firstname%> <span class="cssui-usercard__name-label"><%-user.lastname%></span></h3>
               
             </div>
           </header>
@@ -57,15 +59,28 @@
                   <div class="cssui-usercard__stats">
                     <div class="cssui-stats cssui-usercard__stats-item">
                       <div class="cssui-stats__info cssui-usercard__stats-info">
+                        <span class="cssui-stats__name cssui-usercard__stats-name">First Name</span>
+                        <span class="cssui-stats__value"><input  class="account-input" type="text" name="firstname" value="<%-user.firstname%>"/></span>
+                      </div>
+                    </div>
+                    <div class="cssui-stats cssui-usercard__stats-item">
+                      <div class="cssui-stats__info cssui-usercard__stats-info">
+                        <span class="cssui-stats__name cssui-usercard__stats-name">Last Name</span>
+                        <span class="cssui-stats__value"><input  class="account-input" type="text" name="lastname" value="<%-user.lastname%>"/></span>
+                      </div>
+                    </div>
+
+                    <div class="cssui-stats cssui-usercard__stats-item">
+                      <div class="cssui-stats__info cssui-usercard__stats-info">
                         <span class="cssui-stats__name cssui-usercard__stats-name">E-mail</span>
-                        <span class="cssui-stats__value"><input  class="account-input" type="text" value="abc@gmail.com"/></span>
+                        <span class="cssui-stats__value"><input  class="account-input" type="text" name="email" value="<%-user.email%>"/></span>
                       </div>
                       
                     </div>
                     <div class="cssui-stats cssui-usercard__stats-item">
                       <div class="cssui-stats__info cssui-usercard__stats-info">
                         <span class="cssui-stats__name cssui-usercard__stats-name">Phone Number</span>
-                        <span class="cssui-stats__value"><input  class="account-input" type="text" value="abc@gmail.com"/></span>
+                        <span class="cssui-stats__value"><input  class="account-input" type="text" name="phone" value="<%-user.phone%>"/></span>
                       </div>
                     </div>
                   </div>
@@ -78,25 +93,25 @@
                     <div class="cssui-stats cssui-usercard__stats-item">
                       <div class="cssui-stats__info cssui-usercard__stats-info">
                         <span class="cssui-stats__name cssui-usercard__stats-name">Country</span>
-                        <span class="cssui-stats__value"><input  class="account-input" type="text" value="abc@gmail.com"/></span>
+                        <span class="cssui-stats__value"><input  class="account-input" type="text" name="country" value="<%-user.address.country%>"/></span>
                       </div>
                     </div>
                     <div class="cssui-stats cssui-usercard__stats-item">
                       <div class="cssui-stats__info cssui-usercard__stats-info">
                         <span class="cssui-stats__name cssui-usercard__stats-name">City</span>
-                        <span class="cssui-stats__value"><input  class="account-input" type="text" value="abc@gmail.com"/></span>
+                        <span class="cssui-stats__value"><input  class="account-input" type="text" name="city" value="<%-user.address.city%>"/></span>
                       </div>
                     </div>
                     <div class="cssui-stats cssui-usercard__stats-item">
                       <div class="cssui-stats__info cssui-usercard__stats-info">
-                        <span class="cssui-stats__name cssui-usercard__stats-name">Address</span>
-                        <span class="cssui-stats__value"><input  class="account-input" type="text" value="abc@gmail.com"/></span>
+                        <span class="cssui-stats__name cssui-usercard__stats-name">Address Line</span>
+                        <span class="cssui-stats__value"><input  class="account-input" type="text" name="line" value="<%-user.address.line%>"/></span>
                       </div>
                     </div>
                     <div class="cssui-stats cssui-usercard__stats-item">
                       <div class="cssui-stats__info cssui-usercard__stats-info">
                         <span class="cssui-stats__name cssui-usercard__stats-name">Postal Code</span>
-                        <span class="cssui-stats__value"><input  class="account-input" type="text" value="abc@gmail.com"/></span>
+                        <span class="cssui-stats__value"><input  class="account-input" type="text" name="postal" value="<%-user.address.postal%>"/></span>
                       </div>
                     </div>
                   </div>
@@ -107,18 +122,22 @@
                 <div class="cssui-slider__slide">
                   <h4 class="cssui-usercard__title">Payment Options</h4>
                   <div class="cssui-usercard__stats">
+                    <%if(user.cards.length > 0){%>
+                    <%for(var i=0;i<user.cards.length;i++){%>
                     <div class="cssui-stats cssui-usercard__stats-item">
                       <div class="cssui-stats__info cssui-usercard__stats-info">
-                        <span class="cssui-stats__name cssui-usercard__stats-name">Card-1</span>
-                        <span class="cssui-stats__value"><input  class="account-input" type="text" value="abc@gmail.com"/></span>
+                        <span class="cssui-stats__name cssui-usercard__stats-name">Card- <%= i+1%></span>
+                        <span class="cssui-stats__value"><input  class="account-input" type="text" value="<%= user.cards[i].cardno%>"/></span>
                       </div>
                     </div>
-                    <div class="cssui-stats cssui-usercard__stats-item">
-                      <div class="cssui-stats__info cssui-usercard__stats-info">
-                        <span class="cssui-stats__name cssui-usercard__stats-name">Card-2</span>
-                        <span class="cssui-stats__value"><input  class="account-input" type="text" value="abc@gmail.com"/></span>
+                    <%}}else{%>
+                      <div class="cssui-stats cssui-usercard__stats-item">
+                        <div class="cssui-stats__info cssui-usercard__stats-info">
+                          <span class="cssui-stats__name cssui-usercard__stats-name">Card 1</span>
+                          <span class="cssui-stats__value"><input  class="account-input" type="text" value=""/></span>
+                        </div>
                       </div>
-                    </div>
+                    <%}%>
                   </div>
                 </div>
               </div>
@@ -126,13 +145,12 @@
           </div>
         </div>
         <footer class="cssui-usercard__footer">
-          <a href="#0" >
-            Update
-          </a>
+          <button>Update</button>
         </footer>
-      </article>
-      
+      </article>   
   </section>
+  </form>
+  <%})%>
   <%- include("../partials/allfooter.ejs") %>
 
 

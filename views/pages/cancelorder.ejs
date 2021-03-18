@@ -27,7 +27,7 @@
 
 <!-- multistep form -->
 <section class="body-tab"
-<form id="multistepsform">
+  <form id="multistepsform" >
   <!-- progressbar -->
   <!-- fieldsets -->
   <fieldset>
@@ -43,10 +43,10 @@
             <figure>
                
                 <figcaption>
-        <div class="flex-info" ><span class="flex-info-heading">Address :</span><span class="flex-info-content" > R z 9 X block roshanpura najafgarh</span></div>
-        <div class="flex-info" ><span class="flex-info-heading" >Phone No :</span><span class="flex-info-content"> 96666665</span></div>
-        <div class="flex-info" ><span class="flex-info-heading" >Country :</span><span class="flex-info-content"> India</span></div>
-        <div class="flex-info" ><span class="flex-info-heading" >State :</span><span class="flex-info-content">  Delhi</span></div>
+        <div class="flex-info" ><span class="flex-info-heading">Address :</span><span class="flex-info-content" > <%=order.address.line%></span></div>
+        <div class="flex-info" ><span class="flex-info-heading" >Phone No :</span><span class="flex-info-content"> <%=order.address.phone%></span></div>
+        <div class="flex-info" ><span class="flex-info-heading" >Country :</span><span class="flex-info-content"> <%=order.address.country%></span></div>
+        <div class="flex-info" ><span class="flex-info-heading" >City :</span><span class="flex-info-content">  <%=order.address.city%></span></div>
     </figcaption>
     <img  class="my-img" src="../../public/img/return.png">
         
@@ -65,27 +65,27 @@
             <figure>
                
                 <figcaption>
-        <div class="flex-info" ><span class="flex-info-heading">Order Id :</span><span class="flex-info-content" > 604ceae366456e9f640f44a6</span></div>
-        <div class="flex-info" ><span class="flex-info-heading" >Order Date :</span><span class="flex-info-content"> 12/04/69</span></div>
-        <div class="flex-info" ><span class="flex-info-heading" >Order Total :</span><span class="flex-info-content"> Rs. 300</span></div>
-        <div class="flex-info" ><span class="flex-info-heading" >Payment Method :</span><span class="flex-info-content"> Pay On Delivery</span></div>
+        <div class="flex-info" ><span class="flex-info-heading">Order Id :</span><span class="flex-info-content" > <%=order._id%></span></div>
+        <div class="flex-info" ><span class="flex-info-heading" >Order Date :</span><span class="flex-info-content"> <%=order.orderDate%></span></div>
+        <div class="flex-info" ><span class="flex-info-heading" >Order Total :</span><span class="flex-info-content"><%=order.totalPrice%></span></div>
+        <div class="flex-info" ><span class="flex-info-heading" >Payment Method :</span><span class="flex-info-content"> <%=order.payment%></span></div>
     </figcaption>
-    <img  class="my-img" src="../../public/img/bag3.png">
+    <img  class="my-img" src="../../public/img/logo.png">
         
 
       </figure>
     </section>
 </div>
      
-    <input type="submit" name="submit" class="next action-button" value="Submit" />
+    <button class="next action-button">Submit</button>
   </fieldset>
  
 
 
   <fieldset>
-    <h3 class="head-add">Your Order is Successfully Cancelled</h3>
+    <h3 class="head-add">Are you sure to cancel?</h3>
     <h4 class="cancel-order"> If you had made any kind of payment then the amount will reflect in your account shortly. </h4>
-    <a href="/order" class="goBack" > Go-Back </a>
+    <a href="/order/cancel/done/<%=order._id%>" class="goBack" > Submit </a>
   </fieldset>
 </form>
 </section>

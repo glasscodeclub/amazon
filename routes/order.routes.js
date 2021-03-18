@@ -34,12 +34,83 @@ router.get("/viewdetails/:order_id",middlewares.isLoggedIn, function(req,res){
     });
 })
 
-router.get("/cancel", middlewares.isLoggedIn, function(req,res){
-        res.render("./pages/cancelorder");
+router.get("/cancel/:order_id", middlewares.isLoggedIn, function(req,res){
+    var order = req.params.order_id;
+    var foundorder;
+    let filter={owner: req.user._id };
+    orderLib.findOne(filter, function(err, ordersplaced) {
+        if(err)
+            console.log(err);
+        for(var i=0;i<ordersplaced.orders.length;i++){
+            if(ordersplaced.orders[i]._id == order){
+                foundorder = ordersplaced.orders[i];
+                break;
+            }
+        }  
+        res.render("./pages/cancelorder",{order:foundorder});
+    });
 });
 
-router.get("/return", middlewares.isLoggedIn, function(req,res){
-        res.render("./pages/returnorder");
+router.get("/done", middlewares.isLoggedIn, function(req,res){
+    res.redirect("/order");
 });
+
+router.get("/cancel/done/:order_id", middlewares.isLoggedIn, function(req,res){
+    var order = req.params.order_id;
+    var foundorder;
+    let filter={owner: req.user._id };
+    orderLib.findOne(filter, function(err, ordersplaced) {
+        if(err)
+            console.log(err);
+        for(var i=0;i<ordersplaced.orders.length;i++){
+            if(ordersplaced.orders[i]._id == order){
+                foundorder = ordersplaced.orders[i];
+                foundorder.status = "Cancelled";
+                foundorder.deliveryDate = "";
+                break;
+            }
+        } 
+        ordersplaced.save(); 
+    });
+    res.redirect("/order/done");
+});
+
+router.get("/return/:order_id", middlewares.isLoggedIn, function(req,res){
+    var order = req.params.order_id;
+    var foundorder;
+    let filter={owner: req.user._id };
+    orderLib.findOne(filter, function(err, ordersplaced) {
+        if(err)
+            console.log(err);
+        for(var i=0;i<ordersplaced.orders.length;i++){
+            if(ordersplaced.orders[i]._id == order){
+                foundorder = ordersplaced.orders[i];
+                break;
+            }
+        }  
+        res.render("./pages/returnorder",{order:foundorder});
+    });
+});
+
+router.get("/return/done/:order_id", middlewares.isLoggedIn, function(req,res){
+    var order = req.params.order_id;
+    var foundorder;
+    let filter={owner: req.user._id };
+    orderLib.findOne(filter, function(err, ordersplaced) {
+        if(err)
+            console.log(err);
+        for(var i=0;i<ordersplaced.orders.length;i++){
+            if(ordersplaced.orders[i]._id == order){
+                foundorder = ordersplaced.orders[i];
+                foundorder.status = "Returned";
+                foundorder.deliveryDate = "";
+                break;
+            }
+        } 
+        ordersplaced.save(); 
+    });
+    res.redirect("/order/done");
+});
+
 
 module.exports = router;
