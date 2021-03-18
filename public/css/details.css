@@ -7,6 +7,12 @@
 
   
 }
+
+.product-detail{
+	box-shadow: 5px 10px 23px 9px #717272;
+}
+
+
 .containerr{
   width: 100%;
   padding-right: 15px;
@@ -27,7 +33,6 @@
   background: #f6f6f6;
   border-radius: 0 0 5px 5px;
   padding: 25px;
-  
 }
 
 .titlee{
@@ -135,6 +140,8 @@
 
 
 
+
+
 /* ///////////////////////////////////////////////TEAM////////////////////////// */
 
 .r-detail{
@@ -167,31 +174,31 @@
 
 p{
 	color: rgb(116, 116, 116) !important;
-}
-
-h1, h3{
-	color:rgb(0, 38, 70) ; 
+   font-size: 1.1em; 
 }
 
 
 .dis-in{
 	display: inline;
+  color:rgb(0, 38, 70) ; 
 }
 
 .dis-in-pad{
 	display: inline;
-	
-	
 }
 
 .order-idd{
 	margin-top: 1.4em;
 }
 
+.order-price{
+  color: #1c6aaa !important;
+}
+
 
 
 /* grid engine */
-.row {
+.row-details {
 	display: flex;
 	flex-direction: column;
   }
@@ -203,15 +210,28 @@ h1, h3{
   }
   
   
+  .Address-title{
+    font-size: 3em;
+    color: rgb(1, 33, 109);
+    text-align: center;
+  }
   
-  
+  .address-form-label{
+    font-style: italic;
+    font-size: 1em;
+    color: rgb(1, 33, 109);
+
+  }
   
   .form-ship {
-	max-width: 30em;
+  
+	max-width: 90%;
 	margin: 2em auto;
+  margin-top: 4em;
 	border: .063em solid lightgray;
 	border-radius: 8px;
 	box-shadow: 5px 10px 23px 9px #888888;
+  padding-top: 1em;
   }
   
   
@@ -230,6 +250,7 @@ h1, h3{
   label {
 	cursor: pointer;
 	font-size: small;
+  font-style: italic;
   }
   
   
@@ -242,12 +263,36 @@ h1, h3{
   
   /* devices 400px wide or more */ /* grid engine 2/2 */
   @media screen and (min-width: 400px) {
-	  .row {
+	  .row-details {
 	  flex-direction: row;
 	}
   }
 
-input{
-	padding-left: 1em;
+.address-input{
+	padding: 1em;
+  font-size: .9em;
+  color: #006488;
 }
 
+@media only screen and (max-width: 1139px) {
+  .order-date {
+    margin-left: 0em !important;
+  }
+}
+
+.product-detail .left .main img {
+  object-fit: fill !important;
+  height: 100%;
+  width: 100%;
+}
+
+.OH-btnn{
+
+  padding: 1em 3em ;
+  margin-bottom: 2em;
+  margin-left: 2em;
+  margin-top: 3em;
+  background-color:#1c6aaa;
+  color: white;
+  border-radius: 9px;
+}

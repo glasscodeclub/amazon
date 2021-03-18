@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../public/css/account.css" />
   
   
-
 </head>
 
 <body>
@@ -27,80 +26,112 @@
       <div class="history-page">
       <h1 class="history-page__title">User Account</h1>
       <hr class="hrr" />
-
-<%users.forEach(function(user){%>
-<div class="wrapper-account">
-    <div class="left">
-        <img src="../../public/img/man-2-512.png" alt="user" width="100">
-        <h4><%=user.firstname%> <%=user.lastname%></h4>
-        <a href="#">Update</a>
-
-    </div>
-    <div class="right">
-        <div class="info">
-            <h3 class="color-w" >Information</h3>
-            <div class="info_data">
-                 <div class="data">
-                    <h4 class="color-w" >Email</h4>
-                    <p><%=user.email%></p>
-                 </div>
-              
-                 <div class="data">
-                   <h4 class="color-w" >Phone</h4>
-                   <% user.phone.forEach(function(phone){%>
-                    <p><%=phone%></p>
-                   <%})%>
-              </div>
-            </div>
-        </div>
       
-      <div class="projects">
-            <h3 class="color-w" >Address</h3>
-
-              <% for(var i=0;i<user.address.length;i++){%>
-                <div class="projects_data">
-                 <div class="data">
-                    <h4 class="color-w" >Address</h4>
-                    <p><%=user.address[i].line%>.</p>
-                 </div>
-                 <div class="data">
-                   <h4 class="color-w" >Country</h4>
-                    <p><%=user.address[i].country%></p>
-              </div>
+      <article class="cssui-usercard">
+        <div class="cssui-usercard__body">
+          <header class="cssui-usercard__header">
+            <img src="../../public/img/grid_1.jpg" class="cssui-usercard__avatar" alt="Avatar">
+            <div class="cssui-usercard__header-info">
+              <h3 class="cssui-usercard__name">Naveen<span class="cssui-usercard__name-label">Yadav</span></h3>
+              
             </div>
-            <div class="projects_data">
-                    <div class="data">
-                        <h4 class="color-w" >City</h4>
-                        <p><%=user.address[i].city%></p>
+          </header>
+          <div class="cssui-usercard__content">
+            <div class="cssui-slider">
+    
+              <!-- the control elements of slider -->
+    
+              <input id="slide1" type="radio" class="cssui-slider__switch cssui-usercard__switch" name="slider-controls" checked autofocus>
+              <label for="slide1" class="cssui-slider__control cssui-usercard__control"></label>
+              <input id="slide2" type="radio" class="cssui-slider__switch cssui-usercard__switch" name="slider-controls">
+              <label for="slide2" class="cssui-slider__control cssui-usercard__control"></label>
+              <input id="slide3" type="radio" class="cssui-slider__switch cssui-usercard__switch" name="slider-controls">
+              <label for="slide3" class="cssui-slider__control cssui-usercard__control"></label>
+    
+              <div class="cssui-slider__slides">
+    
+                <!-- first slide -->
+    
+                <div class="cssui-slider__slide">
+                  <h4 class="cssui-usercard__title">Information</h4>
+                  <div class="cssui-usercard__stats">
+                    <div class="cssui-stats cssui-usercard__stats-item">
+                      <div class="cssui-stats__info cssui-usercard__stats-info">
+                        <span class="cssui-stats__name cssui-usercard__stats-name">E-mail</span>
+                        <span class="cssui-stats__value"><input  class="account-input" type="text" value="abc@gmail.com"/></span>
+                      </div>
+                      
                     </div>
-                    <div class="data">
-                      <h4 class="color-w" >Postal Code</h4>
-                        <p><%=user.address[i].postal%></p>
+                    <div class="cssui-stats cssui-usercard__stats-item">
+                      <div class="cssui-stats__info cssui-usercard__stats-info">
+                        <span class="cssui-stats__name cssui-usercard__stats-name">Phone Number</span>
+                        <span class="cssui-stats__value"><input  class="account-input" type="text" value="abc@gmail.com"/></span>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <%}%>
-        </div>
-      
-      <div class="payment">
-            <h3 class="color-w" >Payment</h3>
-            <div class="payment_data">
-              <% for(var i=0;i<user.cards.length;i++){%>
-                 <div class="data">
-                    <h4 class="color-w" >Card <%=i+1%></h4>
-                    <p><%=user.cards[i].cardno%></p>
-                 </div>
-              <%}%>
+
+                <!-- second slide -->
+                <div class="cssui-slider__slide">
+                  <h4 class="cssui-usercard__title">Address</h4>
+                  <div class="cssui-usercard__stats">
+                    <div class="cssui-stats cssui-usercard__stats-item">
+                      <div class="cssui-stats__info cssui-usercard__stats-info">
+                        <span class="cssui-stats__name cssui-usercard__stats-name">Country</span>
+                        <span class="cssui-stats__value"><input  class="account-input" type="text" value="abc@gmail.com"/></span>
+                      </div>
+                    </div>
+                    <div class="cssui-stats cssui-usercard__stats-item">
+                      <div class="cssui-stats__info cssui-usercard__stats-info">
+                        <span class="cssui-stats__name cssui-usercard__stats-name">City</span>
+                        <span class="cssui-stats__value"><input  class="account-input" type="text" value="abc@gmail.com"/></span>
+                      </div>
+                    </div>
+                    <div class="cssui-stats cssui-usercard__stats-item">
+                      <div class="cssui-stats__info cssui-usercard__stats-info">
+                        <span class="cssui-stats__name cssui-usercard__stats-name">Address</span>
+                        <span class="cssui-stats__value"><input  class="account-input" type="text" value="abc@gmail.com"/></span>
+                      </div>
+                    </div>
+                    <div class="cssui-stats cssui-usercard__stats-item">
+                      <div class="cssui-stats__info cssui-usercard__stats-info">
+                        <span class="cssui-stats__name cssui-usercard__stats-name">Postal Code</span>
+                        <span class="cssui-stats__value"><input  class="account-input" type="text" value="abc@gmail.com"/></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+    
+                <!-- third slide -->
+    
+                <div class="cssui-slider__slide">
+                  <h4 class="cssui-usercard__title">Payment Options</h4>
+                  <div class="cssui-usercard__stats">
+                    <div class="cssui-stats cssui-usercard__stats-item">
+                      <div class="cssui-stats__info cssui-usercard__stats-info">
+                        <span class="cssui-stats__name cssui-usercard__stats-name">Card-1</span>
+                        <span class="cssui-stats__value"><input  class="account-input" type="text" value="abc@gmail.com"/></span>
+                      </div>
+                    </div>
+                    <div class="cssui-stats cssui-usercard__stats-item">
+                      <div class="cssui-stats__info cssui-usercard__stats-info">
+                        <span class="cssui-stats__name cssui-usercard__stats-name">Card-2</span>
+                        <span class="cssui-stats__value"><input  class="account-input" type="text" value="abc@gmail.com"/></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-
+          </div>
         </div>
-</div>
-</div>
-<%})%>
-
-
+        <footer class="cssui-usercard__footer">
+          <a href="#0" >
+            Update
+          </a>
+        </footer>
+      </article>
       
-
-
   </section>
   <%- include("../partials/allfooter.ejs") %>
 
@@ -112,4 +143,4 @@
 
 
 
-  
+
