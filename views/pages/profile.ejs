@@ -22,6 +22,7 @@
 <body>
 
   <%- include("../partials/nav.ejs") %>
+
   <%users.forEach(function(user){%>
   <form action="/profile/update" method="POST">
     <section class="section promotion">
@@ -73,7 +74,7 @@
                     <div class="cssui-stats cssui-usercard__stats-item">
                       <div class="cssui-stats__info cssui-usercard__stats-info">
                         <span class="cssui-stats__name cssui-usercard__stats-name">E-mail</span>
-                        <span class="cssui-stats__value"><input  class="account-input" type="text" name="email" value="<%-user.email%>"/></span>
+                        <span class="cssui-stats__value"><textarea  class="account-input-textarea" rows="4" cols="17"  name="email" ><%-user.email%></textarea></span>
                       </div>
                       
                     </div>
@@ -105,7 +106,7 @@
                     <div class="cssui-stats cssui-usercard__stats-item">
                       <div class="cssui-stats__info cssui-usercard__stats-info">
                         <span class="cssui-stats__name cssui-usercard__stats-name">Address Line</span>
-                        <span class="cssui-stats__value"><input  class="account-input" type="text" name="line" value="<%-user.address.line%>"/></span>
+                        <span class="cssui-stats__value"><textarea  class="account-input-textarea" rows="4" cols="17"  name="line" ><%-user.address.line%></textarea></span>
                       </div>
                     </div>
                     <div class="cssui-stats cssui-usercard__stats-item">
@@ -145,12 +146,13 @@
           </div>
         </div>
         <footer class="cssui-usercard__footer">
-          <button>Update</button>
+          <button class="update-button" >Update</button>
         </footer>
       </article>   
   </section>
   </form>
   <%})%>
+
   <%- include("../partials/allfooter.ejs") %>
 
 

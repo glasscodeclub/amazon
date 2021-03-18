@@ -70,6 +70,9 @@ li {
   .container {
     padding: 0 3rem;
   }
+  .cart{
+    padding: 0 0 !important;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -283,7 +286,12 @@ nav .wrapper {
 }
 
 
-
+.box-cart{
+  background-color: rgb(243, 243, 243);
+  padding-left:  1em !important;
+  margin-left: .2em;
+  margin-right: .2em;
+}
 
 
 /* this */
@@ -381,6 +389,11 @@ font-family: "Montserrat-Regular";
   color: var(--white);
   font-weight: 700;
   border-radius: 50%;
+}
+
+.lead{
+  padding: 2em 0em;
+  font-size: large;
 }
 
 @media only screen and (max-width: 1087px) {
@@ -1305,7 +1318,8 @@ font-family: "Montserrat-Regular";
   }
 /* Cart Page */
 .cart {
-  margin: 20rem auto;
+  margin: 10rem 10%;
+  margin-bottom: 10em;
 }
 
 table {

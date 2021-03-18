@@ -1,18 +1,23 @@
+
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/3bb9d2c9bc.js" crossorigin="anonymous"></script>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/3bb9d2c9bc.js" crossorigin="anonymous"></script>
-  <!-- Glidejs -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.css">
-  <!-- Custom StyleSheet -->
-  <link rel="stylesheet" href="../../public/css/home.css" />
-</head>
-<body>
+    <!-- Custom StyleSheet -->
+    <link rel="stylesheet" href="../../public/css/home.css">
+    <title>Cart</title>
+  </head>
+
+  <body>
 
     <!-- Navigation -->
     <nav class="nav nav-cart">
@@ -125,7 +130,6 @@
     </nav>
 
     <!-- Cart Items -->
-    <div class="section promotion" style="padding-bottom: 0;">
     <div class="container cart">
       <%if(products.length > 0){%>
       <table>
@@ -172,20 +176,10 @@
       </div>
     </div>
     <%}else{%>
-      <div class="shadow-none p-3 mb-5 bg-light rounded jumbotron" >
+      <div class="shadow-none p-3 mb-5 bg-light rounded jumbotron">
           <h1 class="display-4">Your Cart is empty.</h1>
           <p class="lead">Your shopping cart is waiting. Give it purpose – fill it with clothing, electronics and more.</p>
       </div>
     <%}%>
-    </div>
 
-<%- include("../partials/allfooter.ejs") %>
-<!-- Glidejs -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
-
-<!-- Custom Scripts -->
-<script src="../../public/js/home.js"></script>
-<script src="../../public/js/slider.js"></script>
-</body>
-
-</html>
+    <%- include("../partials/allfooter.ejs") %>
