@@ -131,38 +131,7 @@ body{
     display: flex;
     margin: 2rem 0;
 }
-.btn{
-    border: none;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    border: 2px solid #000;
-    border-radius: 20px;
-    padding: 0.55rem 0;
-    width: 130px;
-    font-weight: 600;
-    background: transparent;
-    margin: 0 0.5rem;
-    cursor: pointer;
-}
-.btn.btn-pink{
-    background: #255bbe;
-    color: #fff;
-    border-color: #255bbe;
-    transition: all 0.5s ease-in-out;
-}
-.btn.btn-pink:hover{
-    background: transparent;
-    border-color: #255bbe;
-    color: #000;
-}
-.btn.btn-white{
-    transition: all 0.5s ease-in-out;
-}
-.btn.btn-white:hover{
-    background: #255bbe;
-    border-color: #255bbe;
-    color: #fff;
-}
+
 .about-para p{
     font-weight: 300;
     padding: 0.5rem;

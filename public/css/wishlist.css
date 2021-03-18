@@ -8,10 +8,13 @@ html,
 body {
   width: 100%;
   height: 100%;
- 
   margin: 0;
   background-color: #71c6ff;
   font-family: 'Roboto', sans-serif;
+}
+
+.body-wishlist{
+  padding: 5%;
 }
 
 .shopping-cart {
@@ -90,9 +93,14 @@ body {
   100% { background-position: right; }
 }
 
-/* Product Image */
-.image {
+/* Product image-wishlist */
+.image-wishlist {
   margin-right: 50px;
+}
+
+.img-wishlist{
+  height: 80px;
+  width: 120px;
 }
 
 /* Product Description */
@@ -152,9 +160,9 @@ input:focus {
 }
 
 /* Total Price */
-.total-price {
+.total-price-wishlist {
   width: 83px;
-  text-align: center;
+  text-align: center ;
   font-size: 16px;
   color: #43484D;
   font-weight: 300;
@@ -163,21 +171,27 @@ input:focus {
 }
 
 /* Responsive */
+
 @media (max-width: 800px) {
   .shopping-cart {
     width: 100%;
     height: auto;
     overflow: hidden;
+    
   }
   .item {
     height: auto;
     flex-wrap: wrap;
     justify-content: center;
   }
-  .image img {
+  .image-wishlist img {
     width: 50%;
+    height: auto;
   }
-  .image,
+  .total-price-wishlist{
+    width: 100%;
+  }
+  .image-wishlist,
   .quantity,
   .description {
     width: 100%;
@@ -185,12 +199,19 @@ input:focus {
     margin: 6px 0;
   }
   .buttons {
-    margin-right: 20px;
+    margin-right: 1px;
+    margin-bottom: 5px;
+  }
+
+  .quantity{
+    width: 100%;
+    text-align: center;
+    margin: 6px 0;
   }
 }
 
 .btn-wishlist-cart{
-  margin-top: 1em;
+  margin-top: 2em;
   border: none;
   background-color: rgb(109, 167, 255);
   color: white;
