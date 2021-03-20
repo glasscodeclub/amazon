@@ -67,16 +67,13 @@
           <button class="apply-btn">Apply</button>
         </div>
         </form>
-
-
           <div class="product-layout">
             <%if(products.length > 0){%>
             <%products.forEach(function(product){%>
             <div class="product">
               <div class="img-container">
-                <img style="width: 250px; height: 250px;"  src="<%=product.imageURL%>" alt="" />
+                <img style="width: 100%;"  src="<%=product.imageURL%>" alt="" />
                 <div class="addCart">
-                      
                   <form method="POST" action="/cart/add/<%= product._id%>">
                     <div class="form-group">
                       <input type="hidden" name="product_id" id="quantity" value="<%= product._id %>"></input>
@@ -85,17 +82,14 @@
                       <input type="hidden" name="image" id="image" value="<%= product.imageURL %>"></input>
                       <input type="hidden" name="name" id="name" value="<%= product.name %>"></input>
                     </div>
-                      <button type="submit" class="btn btn-cart btn-cart-search btn-primary btn-lg"><i class="fas fa-shopping-cart"></i></button>
+                      <button type="submit" class="btn btn-cart btn-cart-search btn-primary btn-lg" ><i class="fas fa-shopping-cart"></i></button>
                   </form>
-
               </div>
-                <ul class="side-icons">
-                  <span><i class="fas fa-search"></i></span>
-                  <span><i class="far fa-heart"></i></span>
-                  <span><i class="fas fa-sliders-h"></i></span>
+                <ul class="side-icons side-icons-dashboard">
+                  <span class="dash" ><i class="fas fa-search"></i></span>
+                  <span class="dash" ><i class="far fa-heart"></i></span>
+                  <span class="dash" ><i class="fas fa-sliders-h"></i></span>
                 </ul>
-              </div>
-
               <div class="bottom">
                 <a href=""><%=product.name%></a>
                 <div class="price">
@@ -103,6 +97,7 @@
                 </div>
               </div>
             </div>
+          </div>
             <%})%>
             <%}else{%>
               <div class="shadow-none p-3 mb-5 bg-light rounded jumbotron">
@@ -110,7 +105,6 @@
                   <p class="lead">Try searching different products.</p>
               </div>
             <%}%>
-        
           </div>
 
           <!-- PAGINATION -->
@@ -125,3 +119,12 @@
   </section>
 
   <%- include("../partials/allfooter.ejs") %>
+  <!-- Glidejs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
+
+<!-- Custom Scripts -->
+<script src="../../public/js/home.js"></script>
+<script src="../../public/js/slider.js"></script>
+</body>
+
+</html>

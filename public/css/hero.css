@@ -200,4 +200,18 @@
     padding: 1rem 2.5rem;
     font-size: 1.5rem;
   }
+  
+  .banner img.special_01 {
+    height: 300px;
+    width: 400px;
+  }
+  
+  .banner img.special_02 {
+    height: 300px;
+  }
+  
+  .banner img.special_03 {
+    height: 300px;
+  }
+
 }
