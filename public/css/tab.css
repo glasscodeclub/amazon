@@ -34,17 +34,22 @@
   --text-color: hsl(215, 63%, 23%);
 }
 
+[data-theme="returned"] {
+  --border-color: hsl(215, 46%, 42%);
+  --text-color: hsl(215, 63%, 23%);
+}
+
 
 
 .tabby {
-  max-width: 70em;
+  max-width: 60em;
   margin: auto;
 }
 
 /* Tabs */
 .tabs {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .tab {
@@ -97,3 +102,4 @@
   margin-left: 1em;
   margin-bottom: 1em;
 }
+

@@ -19,8 +19,8 @@
   <%- include("../partials/nav.ejs") %>
   <section class="section promotion">
     
-    <div class="containerr">
-        <div class="titlee">
+    <div class="details-container">
+        <div class="details-title">
             <h2>Order Details</h2>
         </div>
         <div class="d-flex">
@@ -246,25 +246,29 @@
                             </div>
                           </div>
                           <br>
-                        
-                        
-                        
-                         
-                        <!-- end .hide -->
+  
+                      <!-- end .hide -->
                       
                       </form>
 
                       
                       <%if(order.status == "Delivered"){%>
-                      <a href="/order/return/<%=order._id%>" class="OH-btnn" >Return</a>
+                        <div style="display: flex; flex-direction: row-reverse;">
+                      <a href="/order/return/<%=order._id%>" class="R-btn" >Return</a>
+                        </div>
                       <%}%>
-                   
-
-         </div>
-           
-           
- 
+          </div>
         </div>
-     
+  
   </section>
   <%- include("../partials/allfooter.ejs") %>
+  
+<!-- Glidejs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
+
+<!-- Custom Scripts -->
+<script src="../../public/js/home.js"></script>
+<script src="../../public/js/slider.js"></script>
+</body>
+
+</html>
