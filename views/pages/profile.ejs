@@ -57,8 +57,8 @@
           <details class="info" >
             <summary>Shipping Address</summary>
           <p class='field'>
-              <label for='user'>Line</label>
-              <input type='text' id='user' name='line' title='Username' value="<%=user.address.line%>" />
+              <label for='user'>Address</label>
+              <textarea  type='text' id='user' name='line' title='Username' cols="10"  ><%=user.address.line%></textarea>
             </p>
   
             <p class='field'>
@@ -86,9 +86,15 @@
                 <input type='text' id='user' name='user' title='Username' value="<%=user.cards[i].cardno%>" />
               </p>
             <%}%>
-            <a href="/profile/addcard">+ add card</a>
+            <p>
+            <a href="/profile/addcard">+ Add card</a>
+            </p>
           </details>
-          <button>Update</button>
+
+          <div class="button-update" >
+          <button class="big-button" >Update</button>
+        </div>
+
         </div>
         </div>
       <!-- Account -->
