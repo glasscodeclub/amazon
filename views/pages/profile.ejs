@@ -83,7 +83,7 @@
             <%for(var i=0;i<user.cards.length;i++){%>
               <p class='field'>
                 <label for='user'>Card <%=i+1%></label>
-                <input type='text' id='user' name='user' title='Username' value="<%=user.cards[i].cardno%>" />
+                <input type='text' id='user' name='user' title='Username' value="<%=user.cards[i].cardno%>" readonly/>
               </p>
             <%}%>
             <p>
