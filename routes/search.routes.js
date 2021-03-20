@@ -11,9 +11,9 @@ router.get("/",middlewares.isLoggedIn, function(req,res){
     var category = req.query.category;
     let filter = {};
     if(category.length == 4)
-        filter = {name:{$regex: name, $options: '$i'}};
+        filter = {$or: [{name:{$regex: name, $options: '$i'}}, {category:{$regex: name, $options: '$i'}}]};
     else
-        filter = {name:{$regex: name, $options: '$i'}, category: category[1]};
+        filter = {$or: [{name:{$regex: name, $options: '$i'}}, {category:{$regex: name, $options: '$i'}}], category: category[1]};
     productLib.findbyId(filter, function(err, products){
         if(err)
             console.log(err);

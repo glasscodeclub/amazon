@@ -17,13 +17,13 @@
 <section class="section promotion">
   <!-- multistep form -->
 <section class="body-tab">
-  <form id="multistepsform" >
+  <form id="multistepsform" action="/order/cancel/<%=order._id%>" method="POST">
   <!-- progressbar -->
   <!-- fieldsets -->
   <fieldset>
     <h2 class="fs-title">Cancelling the Order</h2>
     <h3 class="fs-subtitle"></h3>
-    <input type="text" name="cancel-reason" placeholder=" Enter the Reason " required/>
+    <input type="text" name="cancelreason" placeholder=" Enter the Reason " required>
     <div class="box-address">
         <h3 class="head-add">Shipping Address</h3>
         <section class="root">
@@ -54,15 +54,14 @@
         </section>
     </div>
       
-    <button class="next action-button">Submit</button>
+    <input class="next action-button" value="Submit">
   </fieldset>
-  
   <fieldset>
     <h3 class="head-add">Are you sure to cancel?</h3>
     <h4 class="cancel-order"> If you had made any kind of payment then the amount will reflect in your account shortly. </h4>
-    <a href="/order/cancel/done/<%=order._id%>" class="goBack" > Submit </a>
+    <input type="submit" class="goBack" value="Submit">
   </fieldset>
-  </form>
+</form>
 </section>
 </section>
 

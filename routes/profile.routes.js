@@ -38,4 +38,8 @@ router.post("/update", middlewares.isLoggedIn, function(req,res){
     })
 });
 
+router.get("/addcard", middlewares.isLoggedIn, function(req,res){
+        res.render("./pages/addcard");
+});
+
 module.exports = router;
