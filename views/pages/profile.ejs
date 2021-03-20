@@ -19,91 +19,82 @@
 <body>
   
   <%- include("../partials/nav.ejs") %>
+  <%users.forEach(function(user){%>
+  <form action="/profile/update" method="POST">
+    <section class="section promotion">
+      <!-- Account -->
+      
+      <div class="body-account">
+        <div class="card-details">
+          
+             <div class="details-card"> 
+            <img src="../../public/img/icon.png" class="image--cover">
+          
+          <h1 class="h1-details"><%=user.firstname%> <%=user.lastname%></h1>
+          </div>
+        <details class="warning" open>
+            <summary> Account Overview</summary>
+            <p class='field'>
+              <label for='user'>First Name</label>
+              <input type='text' id='user' name='firstname' title='Username' value="<%=user.firstname%>" />
+            </p>
+            <p class='field'>
+              <label for='user'>Last Name</label>
+              <input type='text' id='user' name='lastname' title='Username' value="<%=user.lastname%>" />
+            </p>
   
-  <section class="section promotion">
-    <!-- Account -->
-    
-    <div class="body-account">
-      <div class="card-details">
-        
-           <div class="details-card"> 
-          <img src="https://i.kinja-img.com/gawker-media/image/upload/gd8ljenaeahpn0wslmlz.jpg" class="image--cover">
-        
-        <h1 class="h1-details">First Last</h1>
+            <p class='field'>
+              <label for='user'>E-MAIL</label>
+              <input type='text' id='user' name='email' title='Username' value="<%=user.email%>" />
+            </p>
+  
+            <p class='field'>
+              <label for='user'>Phone no</label>
+              <input type='text' id='user' name='phone' title='Username' value="<%=user.phone%>" />
+            </p>
+          </details>
+          
+          <details class="info" >
+            <summary>Shipping Address</summary>
+          <p class='field'>
+              <label for='user'>Line</label>
+              <input type='text' id='user' name='line' title='Username' value="<%=user.address.line%>" />
+            </p>
+  
+            <p class='field'>
+              <label for='user'>State</label>
+              <input type='text' id='user' name='city' title='Username' value="<%=user.address.city%>" />
+            </p>
+  
+            <p class='field'>
+              <label for='user'>Country</label>
+              <input type='text' id='user' name='country' title='Username' value="<%=user.address.country%>" />
+            </p>
+  
+            <p class='field'>
+              <label for='user'>Postal Code</label>
+              <input type='text' id='user' name='postal' title='Username' value="<%=user.address.postal%>" />
+            </p>
+  
+          </details>
+          
+          <details class="alert">
+            <summary>Payment Options</summary>
+            <%for(var i=0;i<user.cards.length;i++){%>
+              <p class='field'>
+                <label for='user'>Card <%=i+1%></label>
+                <input type='text' id='user' name='user' title='Username' value="<%=user.cards[i].cardno%>" />
+              </p>
+            <%}%>
+            <a href="/profile/addcard">+ add card</a>
+          </details>
+          <button>Update</button>
         </div>
-      <details class="warning" open>
-          <summary> Account Overview</summary>
-          <p class='field'>
-            <label for='user'>Name</label>
-            <input type='text' id='user' name='user' title='Username' placeholder="Naveen Yadav" />
-          </p>
-
-          <p class='field'>
-            <label for='user'>E-MAIL</label>
-            <input type='text' id='user' name='user' title='Username' placeholder="abc@gmail.com" />
-          </p>
-
-          <p class='field'>
-            <label for='user'>Password</label>
-            <input type='Password' id='user' name='user' title='Username' placeholder="*********" />
-          </p>
-
-        </details>
-        
-        <details class="info" >
-          <summary>Shipping Address</summary>
-        <p class='field'>
-            <label for='user'>Line 1</label>
-            <input type='text' id='user' name='user' title='Username' placeholder="--------" />
-          </p>
-
-          <p class='field'>
-            <label for='user'>Line 2</label>
-            <input type='text' id='user' name='user' title='Username' placeholder="--------" />
-          </p>
-
-          <p class='field'>
-            <label for='user'>State</label>
-            <input type='text' id='user' name='user' title='Username' placeholder="Delhi" />
-          </p>
-
-          <p class='field'>
-            <label for='user'>Country</label>
-            <input type='text' id='user' name='user' title='Username' placeholder="India" />
-          </p>
-
-          <p class='field'>
-            <label for='user'>Postal Code</label>
-            <input type='text' id='user' name='user' title='Username' placeholder="110043" />
-          </p>
-
-          <p class='field'>
-            <label for='user'>Phone no</label>
-            <input type='text' id='user' name='user' title='Username' placeholder="xxx-xxx-xxxx" />
-          </p>
-
-
-        </details>
-        
-        <details class="alert">
-          <summary>Payment Options</summary>
-          <p class='field'>
-            <label for='user'>Card 1</label>
-            <input type='text' id='user' name='user' title='Username' placeholder="--------" />
-          </p>
-
-          <p class='field'>
-            <label for='user'>Card 2</label>
-            <input type='text' id='user' name='user' title='Username' placeholder="--------" />
-          </p>
-        </details>
-      </div>
-      </div>
-    
-    
-    <!-- Account -->
-  </section>
-  
+        </div>
+      <!-- Account -->
+    </section>
+  </form>
+  <%})%>
   <%- include("../partials/allfooter.ejs") %>
 <!-- Glidejs -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>

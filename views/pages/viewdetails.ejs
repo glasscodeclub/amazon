@@ -166,7 +166,8 @@
                               <%=order._id%>
                             </p>
                             </div>
-                                <div  class="order-id order-date" style="margin-left: 1em;" >
+                            <br>
+                                <div  class="order-id order-date">
                                 <h3 class="dis-in">Expected Date :</h3>
                                 <p class="dis-in-pad">
                                   <%=order.deliveryDate%>
@@ -178,12 +179,23 @@
                               delectus nulla voluptates nesciunt quidem laudantium, quisquam
                               voluptas facilis dicta in explicabo, laboriosam ipsam suscipit!
                             </p> -->
+                            <br>
                             <div  class="order-idd" >
                                 <h3 class="dis-in" >Payment Method :</h3>
                                 <p class="dis-in-pad">
                                   <%=order.payment%>
                                 </p>
-                                </div>
+                            </div>
+                            
+                            <%if(order.status == "Returned" || order.status == "Cancelled"){%>
+                              <br>
+                            <div  class="order-idd" >
+                              <h3 class="dis-in" >Reason :</h3>
+                              <p class="dis-in-pad">
+                                <%=order.msg%>
+                            </p>
+                          </div>
+                          <%}%>
                           </div>
                         </div>
                       </section>

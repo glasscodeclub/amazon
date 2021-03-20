@@ -55,8 +55,9 @@ router.get("/done", middlewares.isLoggedIn, function(req,res){
     res.redirect("/order");
 });
 
-router.get("/cancel/done/:order_id", middlewares.isLoggedIn, function(req,res){
+router.post("/cancel/:order_id", middlewares.isLoggedIn, function(req,res){
     var order = req.params.order_id;
+    var msg = req.body.cancelreason;
     var foundorder;
     let filter={owner: req.user._id };
     orderLib.findOne(filter, function(err, ordersplaced) {
@@ -67,6 +68,7 @@ router.get("/cancel/done/:order_id", middlewares.isLoggedIn, function(req,res){
                 foundorder = ordersplaced.orders[i];
                 foundorder.status = "Cancelled";
                 foundorder.deliveryDate = "";
+                foundorder.msg = msg;
                 break;
             }
         } 
@@ -92,8 +94,9 @@ router.get("/return/:order_id", middlewares.isLoggedIn, function(req,res){
     });
 });
 
-router.get("/return/done/:order_id", middlewares.isLoggedIn, function(req,res){
+router.post("/return/:order_id", middlewares.isLoggedIn, function(req,res){
     var order = req.params.order_id;
+    var msg = req.body.cancelreason;
     var foundorder;
     let filter={owner: req.user._id };
     orderLib.findOne(filter, function(err, ordersplaced) {
@@ -104,6 +107,7 @@ router.get("/return/done/:order_id", middlewares.isLoggedIn, function(req,res){
                 foundorder = ordersplaced.orders[i];
                 foundorder.status = "Returned";
                 foundorder.deliveryDate = "";
+                foundorder.msg = msg;
                 break;
             }
         } 
