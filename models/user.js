@@ -16,8 +16,10 @@ var UserSchema = new mongoose.Schema({
     },
     cards:[{
         cardno:{type:String, default:null},
-        expirydate:{type:String, default:null},
-        holdername:{type:String, default:null}
+        expirymonth:{type:String, default:null},
+        expiryyear:{type:String, default:null},
+        holdername:{type:String, default:null},
+        cvv:{type:String, default:null}
     }]
 });
 

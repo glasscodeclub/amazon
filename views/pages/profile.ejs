@@ -85,10 +85,13 @@
                 <label for='user'>Card <%=i+1%></label>
                 <input type='text' id='user' name='user' title='Username' value="<%=user.cards[i].cardno%>" readonly/>
               </p>
+              <a href="/profile/deletecard/<%=user.cards[i]._id%>"> <i class="fas fa-trash-alt" style="color: red; font-size: 20px;"></i></a>
             <%}%>
-            <p>
-            <a href="/profile/addcard">+ Add card</a>
-            </p>
+            <div>
+              <p>
+                <a href="/profile/addcard" style="color: blue;">+add card</a>
+              </p>
+            </div>
           </details>
 
           <div class="button-update" >
