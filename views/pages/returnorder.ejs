@@ -30,10 +30,12 @@
 <form id="multistepsform" action="/order/return/<%=order._id%>" method="POST">
   <!-- progressbar -->
   <!-- fieldsets -->
+
+  
   <fieldset>
     <h2 class="fs-title">Returning the Order</h2>
     <h3 class="fs-subtitle"></h3>
-    <input type="text" name="cancelreason" placeholder=" Enter the Reason " required>
+    <input type="text" name="cancelreason" placeholder=" Enter the Reason " required />
    <div class="box-address">
         <h3 class="head-add">Shipping Address</h3>
         <section class="root">
@@ -73,17 +75,15 @@
       </figure>
     </section>
 </div>
-     
-    <input class="next action-button" value="Submit" readonly>
+<h3 class="head-add">Are you sure to return the order?</h3>
+<h4 class="cancel-order"> If you had made any kind of payment then the amount will reflect in your account after the order is picked up. </h4>
+
+<input class="submit-btn" type="submit" value="Submit">
   </fieldset>
  
 
 
-  <fieldset class="return-page">
-    <h3 class="head-add">Are you sure to return the order?</h3>
-    <h4 class="cancel-order"> If you had made any kind of payment then the amount will reflect in your account after the order is picked up. </h4>
-    <input type="submit" class="goBack" value="Submit">
-  </fieldset>
+
 </form>
 </section>
     

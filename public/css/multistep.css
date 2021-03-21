@@ -51,6 +51,7 @@
 	 cursor: pointer;
 	 padding: 10px 5px;
 	 margin: 10px 5px;
+	 text-align: center;
 }
  #multistepsform .action-button:hover, #multistepsform .action-button:focus {
 	 box-shadow: 0 0 0 2px #5daef0, 0 0 0 3px rgb(153, 168, 255) 76;
@@ -114,6 +115,18 @@
 }
 
 
+.submit-btn{
+	width: 100px !important;
+	background: #76c8ff;
+	font-weight: bold;
+	color: #fff !important;
+	border: 0 none;
+	border-radius: 1px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+	text-align: center;
+}
 
 
 .my-img{
