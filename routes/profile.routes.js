@@ -27,7 +27,6 @@ router.post("/update", middlewares.isLoggedIn, function(req,res){
     userlib.findOne(filter, function(err, user){
         if(err)
             console.log(err)
-        // user = updateduser;
         user.firstname = firstname;
         user.lastname = lastname;
         user.phone = phone;
@@ -40,6 +39,38 @@ router.post("/update", middlewares.isLoggedIn, function(req,res){
 
 router.get("/addcard", middlewares.isLoggedIn, function(req,res){
         res.render("./pages/addcard");
+});
+
+router.post("/addcard", middlewares.isLoggedIn, function(req,res){
+    var cardno = req.body.cardnumber,
+        name = req.body.cardname,
+        expmonth = req.body.expiresmonth,
+        expyear = req.body.expiresyear,
+        cvv = req.body.cardcvv
+    var newcard = {cardno, name, expmonth, expyear, cvv};
+    let filter = {_id: req.user._id};
+    userlib.findOne(filter, function(err, user){
+        if(err)
+            console.log(err)
+        user.cards.push(newcard);
+        user.save();
+        res.redirect("/profile");
+    })
+});
+
+router.get("/deletecard/:card_id", middlewares.isLoggedIn, function(req,res){
+    var id = req.params.card_id;
+    let filter = {_id: req.user._id};
+    userlib.findOne(filter, function(err, user){
+        if(err)
+            console.log(err)
+        for(var i=0;i<user.cards.length;i++){
+            if(user.cards[i]._id == id)
+                user.cards.splice(i, 1);
+        }
+        user.save();
+        res.redirect("/profile");
+    })
 });
 
 module.exports = router;
