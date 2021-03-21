@@ -166,11 +166,17 @@ input:focus {
   font-size: 16px;
   color: #43484D;
   font-weight: 300;
-  margin-top: 0px !important;
+  margin-top: 2em !important;
   
 }
 
 /* Responsive */
+
+@media (min-width: 801px) {
+  .btn-wishlist-cart{
+    margin-left:2em;
+  }
+}
 
 @media (max-width: 800px) {
   .shopping-cart {
