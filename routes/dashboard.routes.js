@@ -15,7 +15,7 @@ router.get("/",middlewares.isLoggedIn, function(req,res){
             if(err){
                 return res.send(err)
             }else{
-                res.render("./pages/dashboard",{"categories":categories, "data":products});
+                res.render("./pages/sellerdash",{"categories":categories, "data":products});
             }
         })
     })

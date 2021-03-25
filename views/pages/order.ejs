@@ -120,7 +120,7 @@
           <!-- Delivered -->
             <div class="product">
             <section class="section products sp" >
-              <div class="products-layout container">
+              <div class="product-layout container">
                 <%if(orders.length > 0){%>
                   <%orders.forEach(function(order){%>
                   <%if(order.status == "Delivered"){%>
@@ -192,7 +192,7 @@
           <!-- Cancelled -->
             <div class="product">
             <section class="section products sp" >
-              <div class="products-layout container">
+              <div class="product-layout container">
                 <%if(orders.length > 0){%>
                   <%orders.forEach(function(order){%>
                     <%if(order.status == "Cancelled"){%>
@@ -259,7 +259,7 @@
           <!-- returned -->
             <div class="product">
             <section class="section products sp" >
-              <div class="products-layout container">
+              <div class="product-layout container">
                 <%if(orders.length > 0){%>
                   <%orders.forEach(function(order){%>
                     <%if(order.status == "Returned"){%>
