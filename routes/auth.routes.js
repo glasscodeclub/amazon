@@ -2,21 +2,33 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 var User = require("../models/user");
-var Cart = require("../models/cart");
 
 router.get("/signup", function(req, res){
     res.render("./pages/signup");
 })
 router.post("/signup", function(req, res){
-    User.register(new User({username:req.body.username}),req.body.password, function(err, user){
+    var category = req.body.category;
+    if(category == "User"){
+        User.register(new User({username:req.body.username, category:category}),req.body.password, function(err, user){
             if(err){
                 console.log(err);
                 return res.render('./pages/signup');
-            } //user stragety
+            } 
             passport.authenticate("local")(req, res, function(){
                 res.redirect("/dashboard");
             }); 
         });
+    }else if(category == "Seller"){
+        User.register(new User({username:req.body.username, category:category}),req.body.password, function(err, user){
+            if(err){
+                console.log(err);
+                return res.render('./pages/signup');
+            } 
+            passport.authenticate("local")(req, res, function(){
+                res.redirect("/dashboard");
+            }); 
+        });
+    }
 });
 
 router.get("/login", function(req, res){

@@ -14,7 +14,7 @@
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-        <a class="navbar-brand" href="#">Seller Dashboard</a>
+        <a class="navbar-brand" href="/dashboard">Seller Dashboard</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -217,29 +217,29 @@
       <div class="content-wrapper">
 
       <div class="container-product">  
-        <form id="contact" action="" method="post">
+        <form id="contact" action="/seller/addproduct" method="post">
           <h3>Add Product</h3>
           <h4>Add your product's Details below</h4>
           <fieldset>
-            <input placeholder="Product Name" type="text" tabindex="1" required autofocus>
+            <input name="name" placeholder="Product Name" type="text" tabindex="1" required autofocus>
           </fieldset>
           <fieldset>
-            <input placeholder="Image URL" type="email" tabindex="2" required>
+            <input name="imageURL" placeholder="Image URL" type="text" tabindex="2" required>
           </fieldset>
           <fieldset>
-            <input placeholder="Price ( Rs.)" type="tel" tabindex="3" required>
+            <input name="price" placeholder="Price ( Rs.)" type="number" tabindex="3" required>
           </fieldset>
           <fieldset>
-            <input placeholder="Stock" type="url" tabindex="4" required>
+            <input name="stock" placeholder="Stock" type="number" tabindex="4" required>
           </fieldset>
           <fieldset>
-            <textarea placeholder="Product's Description" tabindex="5" required></textarea>
+            <textarea name="description" placeholder="Product's Description" tabindex="5" required></textarea>
           </fieldset>
               <fieldset>
-            <input placeholder="Category" type="url" tabindex="6" required>
+            <input name="category" placeholder="Category" type="text" tabindex="6" required>
           </fieldset>
               <fieldset>
-            <input placeholder="Discount" type="url" tabindex="7" required>
+            <input name="discount" placeholder="Discount" type="number" tabindex="7" required>
           </fieldset>
           <fieldset>
             <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
