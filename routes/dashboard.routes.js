@@ -6,8 +6,7 @@ var middlewares = require("../middlewares/auth");
 const userLib = require("../lib/user.lib");
 
 router.get("/",middlewares.isLoggedIn, function(req,res){
-    userLib.findbyId({_id: req.user._id}, function(err, user){
-        if(user[0].category == "User"){
+        if(req.user.category == "User"){
             let cfilter={};
             categoryLib.findbyId(cfilter, function(err,categories){
                 if(err){
@@ -25,7 +24,6 @@ router.get("/",middlewares.isLoggedIn, function(req,res){
         }else{
             res.render("./pages/sellerdash");
         }
-    })
 });
 
 router.get("/:cat_id", middlewares.isLoggedIn, function(req,res){

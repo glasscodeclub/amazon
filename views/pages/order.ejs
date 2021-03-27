@@ -73,7 +73,7 @@
                               <span class="order-track-status-line"></span>
                             </div>
                             <div class="order-track-text">
-                              <p class="order-track-text-stat">Order Received</p>
+                              <p class="order-track-text-stat"><%=order.status%></p>
                               <span class="order-track-text-sub"><%=order.orderDate%></span>
                             </div>
                           </div> 
@@ -83,7 +83,7 @@
                               <span class="order-track-status-line"></span>
                             </div>
                             <div class="order-track-text">
-                              <p class="order-track-text-stat"><%=order.status%></p>
+                              <p class="order-track-text-stat">Delivery</p>
                               <span class="order-track-text-sub"><%=order.deliveryDate%></span>
                             </div>
                           </div>
@@ -166,7 +166,7 @@
                       </div>
                       <div class="div-btn div-btn-delivered">
                       <a href="/order/viewdetails/<%=order._id%>" class="OH-btnn" >View Details</a>
-                      <a href="/order/cancel" class="OH-btnn" >Buy Again</a>
+                      <a href="/order/buyagain/<%=order._id%>" class="OH-btnn" >Buy Again</a>
                       <a href="/order/return/<%=order._id%>" class="OH-btnn" >Return Order</a>
                     </div>
                     
