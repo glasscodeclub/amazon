@@ -64,8 +64,8 @@ router.post("/add/:id",middlewares.isLoggedIn, function(req,res){
             cart.save();
             no = cart.items.length;
         }
+        res.redirect("/cart");
     });
-    res.redirect("/cart");
 });
 
 

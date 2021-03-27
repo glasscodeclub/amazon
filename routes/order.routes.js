@@ -18,6 +18,10 @@ router.get("/", middlewares.isLoggedIn, function(req,res){
     });
 });
 
+router.get("/done", middlewares.isLoggedIn, function(req,res){
+    res.redirect("/order");
+});
+
 router.get("/new", middlewares.isLoggedIn, function(req,res){
     let filter={owner: req.user._id };
     cartLib.findOne(filter, function(err, cart) {
@@ -60,12 +64,13 @@ router.get("/new", middlewares.isLoggedIn, function(req,res){
                         if(err)
                             console.log(err)
                         neworder.orders.push(order)
+                        neworder.save()
                     })
                 }
                 cart.items = [];
                 cart.totalPrice = 0;
                 cart.save();
-                res.redirect("/order");
+                res.redirect("/order/done");
             })
         }
         else
@@ -105,10 +110,6 @@ router.get("/cancel/:order_id", middlewares.isLoggedIn, function(req,res){
         }  
         res.render("./pages/cancelorder",{order:foundorder});
     });
-});
-
-router.get("/done", middlewares.isLoggedIn, function(req,res){
-    res.redirect("/order");
 });
 
 router.post("/cancel/:order_id", middlewares.isLoggedIn, function(req,res){
