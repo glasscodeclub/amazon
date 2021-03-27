@@ -7,7 +7,11 @@ var productSchema = new mongoose.Schema({
     stock: Number,
     description: String,
     category: String,
-    discount: Number
+    discount: Number,
+    seller: { 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'User'
+    }
 });
 
 module.exports = mongoose.model("Product",productSchema);
