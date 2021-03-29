@@ -19,7 +19,8 @@ var express                 = require("express"),
     privacypolicyroute      = require("./routes/privacypolicy.routes"),
     profileroute            = require("./routes/profile.routes"),
     sellerroute             = require("./routes/seller.routes")
-    
+
+var methodOverride = require("method-override");
 var app = express();
 var port=4000;
 var mongoURL = "mongodb+srv://arnav:aryan@cluster0.ucqrc.mongodb.net/amazondb?retryWrites=true&w=majority";
@@ -29,7 +30,7 @@ mongoose.connect(mongoURL, {
   useCreateIndex: true,
   useFindAndModify: false
 });
-
+app.use(methodOverride("_method"));
 app.use(bodyParser.urlencoded({extended:true}));
 app.use("/public", express.static("public"));
 app.use(require("express-session")({

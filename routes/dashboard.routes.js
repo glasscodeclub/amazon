@@ -4,6 +4,7 @@ var productLib = require("../lib/product.lib");
 var categoryLib = require("../lib/category.lib");
 var middlewares = require("../middlewares/auth");
 const userLib = require("../lib/user.lib");
+const orderLib = require("../lib/order.lib");
 
 router.get("/",middlewares.isLoggedIn, function(req,res){
         if(req.user.category == "User"){
@@ -22,7 +23,12 @@ router.get("/",middlewares.isLoggedIn, function(req,res){
                 })
             })
         }else{
-            res.render("./pages/sellerdash");
+            let filter = {}
+            orderLib.findbyId(filter, function(err,orders){
+                if(err)
+                    console.log(err)
+                res.render("./pages/sellerdash",{orders:orders});
+            })
         }
 });
 

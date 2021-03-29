@@ -34,7 +34,7 @@ router.get("/new", middlewares.isLoggedIn, function(req,res){
                 var totalPrice = cart.totalPrice,
                 items = cart.items,
                 payment = "Cash On Delivery",
-                status = "Placed",
+                status = "Waiting for Confirmation",
                 tempOrderDate = new Date(),
                 orderDate = tempOrderDate.toLocaleDateString(),
                 tempdeliveryDate = new Date(tempOrderDate.getTime() + 172800000),
