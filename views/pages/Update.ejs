@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
-  <link rel="stylesheet" href="../../public/css/seller.css" />
-  <link rel="stylesheet" href="../../public/css/addproduct.css" />
+  <link rel="stylesheet" href="/public/css/seller.css" />
+  <link rel="stylesheet" href="/public/css/addproduct.css">
 
 </head>
 
@@ -240,9 +240,7 @@
                     <input name="product[stock]" value="<%=product.stock%>" placeholder="Stock" type="number" tabindex="4" required>
                   </fieldset>
                   <fieldset>
-                    <!-- <textarea name="product[description]" value="<%=product.description%>" type="text" required></textarea> -->
-                    <!-- <textarea rows="10" type="text" name="product[description]" value="<%=product.description%>" required></textarea> -->
-                    <input name="product[description]" value="<%=product.description%>" required>
+                    <textarea name="product[description]" tabindex="5" required><%=product.description%></textarea>
                   </fieldset>
                       <fieldset>
                     <!-- <input name="category" placeholder="Category" type="text" tabindex="6" required> -->
