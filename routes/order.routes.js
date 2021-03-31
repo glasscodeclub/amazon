@@ -2,6 +2,8 @@ var express = require("express");
 var router = express.Router();
 var Order = require("../models/order")
 var orderLib = require("../lib/order.lib")
+var OrderItem = require("../models/orderitem")
+var orderitemLib = require("../lib/orderitem.lib")
 var cartLib = require("../lib/cart.lib");
 var middlewares = require("../middlewares/auth");
 
@@ -10,11 +12,33 @@ router.get("/", middlewares.isLoggedIn, function(req,res){
     orderLib.findOne(filter, function(err, ordersplaced) {
         if(err)
             console.log(err);
+        let orders = [];
         if(ordersplaced != null){
-            res.render("./pages/order", {orders: ordersplaced.orders});
+            const functionA = () => {
+                orders = orders;
+            }
+            const getorders = () => {
+                return new Promise((resolve, reject) =>{
+                    setTimeout(() => {
+                        resolve(functionA())
+                    }, 1000)
+                })
+            };
+
+            const callMe = async() => {
+                ordersplaced.orders.forEach(function(id){
+                    let ofilter = {_id: id}
+                    orderitemLib.findOne(ofilter, function(err, foundorder){
+                        orders.push(foundorder);
+                    })
+                })
+                let r1 = await getorders(); 
+                res.render("./pages/order", {orders: orders}); 
+            }
+            callMe();
+        }else{
+            res.render("./pages/order", {orders: []}); 
         }
-        else
-            res.render("./pages/order", {orders: {}});
     });
 });
 
@@ -32,41 +56,47 @@ router.get("/new", middlewares.isLoggedIn, function(req,res){
                 if(err)
                     console.log(err)
                 var totalPrice = cart.totalPrice,
-                items = cart.items,
-                payment = "Cash On Delivery",
-                status = "Waiting for Confirmation",
-                tempOrderDate = new Date(),
-                orderDate = tempOrderDate.toLocaleDateString(),
-                tempdeliveryDate = new Date(tempOrderDate.getTime() + 172800000),
-                deliveryDate = tempdeliveryDate.toLocaleDateString(),
-                tempreturnDate = new Date(tempdeliveryDate.getTime() + 604800000),
-                returnDate = tempreturnDate.toLocaleDateString(),
-                msg = null,
-                line = req.user.address.line,
-                city = req.user.address.city,
-                country = req.user.address.country,
-                postal = req.user.address.postal,
-                firstname = req.user.firstname,
-                lastname = req.user.lastname,
-                email = req.user.email,
-                phone = req.user.phone,
-                address = {line, city, country, postal, firstname, lastname, email, phone},
-                order = {totalPrice, items, payment, status, orderDate, deliveryDate, returnDate, msg, address};
-
-                if(ordersplaced != null){
-                    ordersplaced.orders.push(order);
-                    ordersplaced.save(); 
-                }else{
-                    var owner = req.user._id,
-                        orders = [];
-                        newuser = {owner, orders}
-                    Order.create(newuser, function(err, neworder){
-                        if(err)
-                            console.log(err)
-                        neworder.orders.push(order)
-                        neworder.save()
-                    })
-                }
+                    items = cart.items,
+                    payment = "Cash On Delivery",
+                    status = "Waiting for Confirmation",
+                    tempOrderDate = new Date(),
+                    orderDate = tempOrderDate.toLocaleDateString(),
+                    tempdeliveryDate = new Date(tempOrderDate.getTime() + 172800000),
+                    deliveryDate = tempdeliveryDate.toLocaleDateString(),
+                    tempreturnDate = new Date(tempdeliveryDate.getTime() + 604800000),
+                    returnDate = tempreturnDate.toLocaleDateString(),
+                    msg = null,
+                    line = req.user.address.line,
+                    city = req.user.address.city,
+                    country = req.user.address.country,
+                    postal = req.user.address.postal,
+                    firstname = req.user.firstname,
+                    lastname = req.user.lastname,
+                    email = req.user.email,
+                    phone = req.user.phone,
+                    address = {line, city, country, postal, firstname, lastname, email, phone},
+                    order = {totalPrice, items, payment, status, orderDate, deliveryDate, returnDate, msg, address};
+                var id;
+                OrderItem.create(order, function(err, neworder){
+                    if(err)
+                        console.log(err);
+                    id = neworder._id;
+                    if(ordersplaced != null){
+                        ordersplaced.orders.push(id);
+                        ordersplaced.save(); 
+                    }else{
+                        var owner = req.user._id,
+                            orders = [];
+                            newuser = {owner, orders}
+                            console.log(newuser)
+                        Order.create(newuser, function(err, neworder){
+                            if(err)
+                                console.log(err)
+                            neworder.orders.push(id)
+                            neworder.save()
+                        })
+                    }
+                }) 
                 cart.items = [];
                 cart.totalPrice = 0;
                 cart.save();
@@ -79,128 +109,89 @@ router.get("/new", middlewares.isLoggedIn, function(req,res){
 });
 
 router.get("/viewdetails/:order_id",middlewares.isLoggedIn, function(req,res){
-    var order = req.params.order_id;
-    var foundorder;
-    let filter={owner: req.user._id };
-    orderLib.findOne(filter, function(err, ordersplaced) {
+    let filter={_id: req.params.order_id};
+    orderitemLib.findOne(filter, function(err, foundorder) {
         if(err)
             console.log(err);
-        for(var i=0;i<ordersplaced.orders.length;i++){
-            if(ordersplaced.orders[i]._id == order){
-                foundorder = ordersplaced.orders[i];
-                break;
-            }
-        }  
-        res.render("./pages/viewdetails",{order:foundorder});
+            res.render("./pages/viewdetails",{order:foundorder});
     });
 })
 
 router.get("/cancel/:order_id", middlewares.isLoggedIn, function(req,res){
-    var order = req.params.order_id;
-    var foundorder;
-    let filter={owner: req.user._id };
-    orderLib.findOne(filter, function(err, ordersplaced) {
+    let filter={_id: req.params.order_id};
+    orderitemLib.findOne(filter, function(err, foundorder) {
         if(err)
             console.log(err);
-        for(var i=0;i<ordersplaced.orders.length;i++){
-            if(ordersplaced.orders[i]._id == order){
-                foundorder = ordersplaced.orders[i];
-                break;
-            }
-        }  
         res.render("./pages/cancelorder",{order:foundorder});
     });
 });
 
 router.post("/cancel/:order_id", middlewares.isLoggedIn, function(req,res){
-    var order = req.params.order_id;
     var msg = req.body.cancelreason;
-    var foundorder;
-    let filter={owner: req.user._id };
-    orderLib.findOne(filter, function(err, ordersplaced) {
+    let filter={_id: req.params.order_id};
+    orderitemLib.findOne(filter, function(err, foundorder) {
         if(err)
             console.log(err);
-        for(var i=0;i<ordersplaced.orders.length;i++){
-            if(ordersplaced.orders[i]._id == order){
-                foundorder = ordersplaced.orders[i];
-                foundorder.status = "Cancelled";
-                foundorder.deliveryDate = new Date().toLocaleDateString();
-                foundorder.msg = msg;
-                break;
-            }
-        } 
-        ordersplaced.save(); 
+        foundorder.status = "Cancelled";
+        foundorder.deliveryDate = new Date().toLocaleDateString();
+        foundorder.msg = msg;
+        foundorder.save(); 
     });
     res.redirect("/order/done");
 });
 
 router.get("/buyagain/:order_id", middlewares.isLoggedIn, function(req,res){
-    var orderid = req.params.order_id;
-    var foundorder;
     let filter={owner: req.user._id };
     orderLib.findOne(filter, function(err, ordersplaced) {
-        if(err)
-            console.log(err);
-        for(var i=0;i<ordersplaced.orders.length;i++){
-            if(ordersplaced.orders[i]._id == orderid){
-                foundorder = ordersplaced.orders[i];
-                break;
-            }
-        }
-        var totalPrice = foundorder.totalPrice,
-            items = foundorder.items,
-            payment = "Cash On Delivery",
-            status = "Placed",
-            tempOrderDate = new Date(),
-            orderDate = tempOrderDate.toLocaleDateString(),
-            tempdeliveryDate = new Date(tempOrderDate.getTime() + 172800000),
-            deliveryDate = tempdeliveryDate.toLocaleDateString(),
-            tempreturnDate = new Date(tempdeliveryDate.getTime() + 604800000),
-            returnDate = tempreturnDate.toLocaleDateString(),
-            msg = null,
-            address = foundorder.address,
-            order = {totalPrice, items, payment, status, orderDate, deliveryDate, returnDate, msg, address};
-        ordersplaced.orders.push(order);
-        ordersplaced.save(); 
-        res.redirect("/order/done");
-    });
+        let ofilter={_id: req.params.order_id};
+        orderitemLib.findOne(ofilter, function(err, foundorder) {
+            if(err)
+                console.log(err);
+            var totalPrice = foundorder.totalPrice,
+                items = foundorder.items,
+                payment = "Cash On Delivery",
+                status = "Waiting for confirmation",
+                tempOrderDate = new Date(),
+                orderDate = tempOrderDate.toLocaleDateString(),
+                tempdeliveryDate = new Date(tempOrderDate.getTime() + 172800000),
+                deliveryDate = tempdeliveryDate.toLocaleDateString(),
+                tempreturnDate = new Date(tempdeliveryDate.getTime() + 604800000),
+                returnDate = tempreturnDate.toLocaleDateString(),
+                msg = null,
+                address = foundorder.address,
+                order = {totalPrice, items, payment, status, orderDate, deliveryDate, returnDate, msg, address};
+                var id;
+                OrderItem.create(order, function(err, neworder){
+                    if(err)
+                        console.log(err);
+                    id = neworder._id;
+                    ordersplaced.orders.push(id);
+                    ordersplaced.save(); 
+                }) 
+            res.redirect("/order/done");
+        });
+    })
 });
 
 router.get("/return/:order_id", middlewares.isLoggedIn, function(req,res){
-    var order = req.params.order_id;
-    var foundorder;
-    let filter={owner: req.user._id };
-    orderLib.findOne(filter, function(err, ordersplaced) {
+    let filter={_id: req.params.order_id};
+    orderitemLib.findOne(filter, function(err, foundorder) {
         if(err)
             console.log(err);
-        for(var i=0;i<ordersplaced.orders.length;i++){
-            if(ordersplaced.orders[i]._id == order){
-                foundorder = ordersplaced.orders[i];
-                break;
-            }
-        }  
         res.render("./pages/returnorder",{order:foundorder});
     });
 });
 
 router.post("/return/:order_id", middlewares.isLoggedIn, function(req,res){
-    var order = req.params.order_id;
     var msg = req.body.cancelreason;
-    var foundorder;
-    let filter={owner: req.user._id };
-    orderLib.findOne(filter, function(err, ordersplaced) {
+    let filter={_id: req.params.order_id};
+    orderitemLib.findOne(filter, function(err, foundorder) {
         if(err)
             console.log(err);
-        for(var i=0;i<ordersplaced.orders.length;i++){
-            if(ordersplaced.orders[i]._id == order){
-                foundorder = ordersplaced.orders[i];
-                foundorder.status = "Returned";
-                foundorder.deliveryDate = new Date().toLocaleDateString();
-                foundorder.msg = msg;
-                break;
-            }
-        } 
-        ordersplaced.save(); 
+        foundorder.status = "Returned";
+        foundorder.deliveryDate = new Date().toLocaleDateString();
+        foundorder.msg = msg;    
+        foundorder.save(); 
     });
     res.redirect("/order/done");
 });
