@@ -11,13 +11,19 @@ router.get("/orders",middlewares.isLoggedIn, function(req,res){
     let sellerorders = [];
     orderitemLib.findbyId(filter, function(err, orders){
         orders.forEach(function(order){
-            order.items.forEach(function(getorder){
-                if(getorder.seller == req.user._id.toString()){
-                    sellerorders.push(order);
-                }
-            })
+            if(order.items.seller == req.user._id.toString()){
+                sellerorders.push(order);
+            }
         })
+        sellerorders.reverse();
         res.render("./pages/sellerdash",{orders:sellerorders});
+    })
+});
+
+router.get("/orders/:order_id",middlewares.isLoggedIn, function(req,res){
+    let filter = {_id:req.params.order_id};
+    orderitemLib.findOne(filter, function(err, order){
+        res.render("./pages/orderdetails",{order:order});
     })
 });
 
