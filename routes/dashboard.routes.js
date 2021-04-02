@@ -23,11 +23,11 @@ router.get("/",middlewares.isLoggedIn, function(req,res){
                 })
             })
         }else{
-            let filter = {}
-            orderLib.findbyId(filter, function(err,orders){
+            let filter = {_id: req.user._id}
+            userLib.findOne(filter, function(err,user){
                 if(err)
                     console.log(err)
-                res.render("./pages/sellerdash",{orders:orders});
+                res.render("./pages/sellerprofile",{seller: user});
             })
         }
 });

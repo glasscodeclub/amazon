@@ -8,7 +8,7 @@ var orderSchema = new mongoose.Schema({
   orders: [{ 
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'OrderItem'
-    }]
+    }],
 });
 
 module.exports = mongoose.model('Order', orderSchema);

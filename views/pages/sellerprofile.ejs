@@ -13,155 +13,155 @@
   <%- include("../partials/seller/nav.ejs") %>
   <div class="content-wrapper">
 
-
     <div class="form-area">
-        <div class="form-header">
+        <form action="/profile/update" method="POST">
+            <div class="form-header">
 
-            <div class="bottom-header" style="padding-top: 2em;">
+                <div class="bottom-header" style="padding-top: 2em;">
 
-            </div>
-        </div>
-    
-        <div class="form-body">   
-            <div class="multitab-form-area">
-                <div class="tab-links-area">
-                    <h1>Seller Details</h1>
-                    
-                    <hr>
-                    <ul>
-                        <li><a data-toggle="formtab" href="#userProfile" class="active">Profile</a></li>
-                        <li><a data-toggle="formtab" href="#Address"> Address</a></li>
-                        <li><a data-toggle="formtab" href="#bankInfo">Bank Information</a></li>
-                    </ul>
                 </div>
-                <div class="tab-form-area">
-                    <div class="tabs-panels active" id="userProfile">
-                        <div class="tab-part">
-                            <h4>Seller Profile</h4>
-                            <hr>
-                            <div class="devider-row">
-                                <div class="half-2">
-                                    <div class="form-field">
-                                        <label>Full Name</label>
-                                        <input type="text" placeholder="Jhone Doe">
-                                    </div>
-                                    <div class="form-field">
-                                        <label>Email ID</label>
-                                        <input type="text" placeholder="example@domain.com">
-                                    </div>
-                                </div>
-                                <div class="half-2">
-                                    <div class="form-field">
-                                        <label>Phone Number</label>
-                                        <input type="text" placeholder="+91 123-456-789">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="next-btn">
-                            <a data-toggle="formtab" href="#Address">Next</a>
-                        </div>
+            </div>
+        
+            <div class="form-body">   
+                <div class="multitab-form-area">
+                    <div class="tab-links-area">
+                        <h1>Seller Details</h1>
+                        
+                        <hr>
+                        <ul>
+                            <li><a data-toggle="formtab" href="#userProfile" class="active">Profile</a></li>
+                            <li><a data-toggle="formtab" href="#Address"> Address</a></li>
+                            <!-- <li><a data-toggle="formtab" href="#bankInfo">Bank Information</a></li> -->
+                        </ul>
                     </div>
-                    <div class="tabs-panels" id="Address">
-                        <div class="tab-part">
-                            <h4>Residential Address</h4>
-                            <hr>
-                            <div class="devider-row">
-                                <div class="half-2">
-                                    <div class="form-field">
-                                        <label>Address</label>
-                                        <input type="text" placeholder="Address">
+                    <div class="tab-form-area">
+                        <div class="tabs-panels active" id="userProfile">
+                            <div class="tab-part">
+                                <h4><%=seller.firstname%> <%=seller.lastname%></h4>
+                                <hr>
+                                <div class="devider-row">
+                                    <div class="half-2">
+                                        <div class="form-field">
+                                            <label>First Name</label>
+                                            <input type="text" name='firstname' value="<%=seller.firstname%>">
+                                        </div>
+                                        <div class="form-field">
+                                            <label>Email ID</label>
+                                            <input type="text" name='email' value="<%=seller.email%>">
+                                        </div>
                                     </div>
-                                    <div class="form-field">
-                                        <label>Country</label>
-                                        <input type="text" placeholder="India">
-                                    </div>
-                                </div>
-                                <div class="half-2">
-                                    <div class="form-field">
-                                        <label>State</label>
-                                        <input type="text" placeholder="Delhi">
-                                    </div>
-                                    <div class="form-field">
-                                        <label>Zip Code</label>
-                                        <input type="text" placeholder="201003">
+                                    <div class="half-2">
+                                        <div class="form-field">
+                                            <label>Last Name</label>
+                                            <input type="text" name='lastname' value="<%=seller.lastname%>">
+                                        </div>
+                                        <div class="form-field">
+                                            <label>Phone Number</label>
+                                            <input type="text" name='phone' value="<%=seller.phone%>">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="next-btn">
+                                <a data-toggle="formtab" href="#Address">Next</a>
+                            </div>
+                        </div>
+                        <div class="tabs-panels" id="Address">
+                            <div class="tab-part">
+                                <h4>Residential Address</h4>
+                                <hr>
+                                <div class="devider-row">
+                                    <div class="half-2">
+                                        <div class="form-field">
+                                            <label>Address</label>
+                                            <input type="text" name='line'  value="<%=seller.address.line%>">
+                                        </div>
+                                        <div class="form-field">
+                                            <label>Country</label>
+                                            <input type="text" name='city' value="<%=seller.address.country%>">
+                                        </div>
+                                    </div>
+                                    <div class="half-2">
+                                        <div class="form-field">
+                                            <label>State</label>
+                                            <input type="text" name='country' value="<%=seller.address.city%>">
+                                        </div>
+                                        <div class="form-field">
+                                            <label>Zip Code</label>
+                                            <input type="text" name='postal' value="<%=seller.address.postal%>">
+                                        </div>
+                                    </div>
+                                </div>
 
+                            </div>
+                            <div class="next-btn">
+                                <button type="submit">Update</button>
+                            </div>
                         </div>
-                        <div class="next-btn">
-                            <a data-toggle="formtab" href="#jobDescription">Next</a>
-                        </div>
-                    </div>
-                    <div class="tabs-panels" id="bankInfo">
-                        <div class="tab-part">
-                            <h4>Bank Information</h4>
-                            <hr>
-                            <div class="devider-row">
-                                <div class="half-2">
-                                    <div class="form-field">
-                                        <label>Bank Name</label>
-                                        <input type="text" placeholder="ABC">
+                        <!-- <div class="tabs-panels" id="bankInfo">
+                            <div class="tab-part">
+                                <h4>Bank Information</h4>
+                                <hr>
+                                <div class="devider-row">
+                                    <div class="half-2">
+                                        <div class="form-field">
+                                            <label>Bank Name</label>
+                                            <input type="text" placeholder="ABC">
+                                        </div>
+                                        <div class="form-field">
+                                            <label>Account No</label>
+                                            <input type="text" placeholder="****">
+                                        </div>
                                     </div>
-                                    <div class="form-field">
-                                        <label>Account No</label>
-                                        <input type="text" placeholder="****">
-                                    </div>
-                                </div>
-                                <div class="half-2">
-                                    <div class="form-field">
-                                        <label>IFSC code</label>
-                                        <input type="text" placeholder="xxxxx">
-                                    </div>
-                                    <div class="form-field">
-                                        <label>Date of Birth</label>
-                                        <div class="devider-row">
-                                            <div class="half-3">
-                                                <div class="form-field">
-                                                    <select>
-                                                        <option value="29">29</option>
-                                                    </select>
+                                    <div class="half-2">
+                                        <div class="form-field">
+                                            <label>IFSC code</label>
+                                            <input type="text" placeholder="xxxxx">
+                                        </div>
+                                        <div class="form-field">
+                                            <label>Date of Birth</label>
+                                            <div class="devider-row">
+                                                <div class="half-3">
+                                                    <div class="form-field">
+                                                        <select>
+                                                            <option value="29">29</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="half-3">
-                                                <div class="form-field">
-                                                    <select>
-                                                        <option value="may">May</option>
-                                                    </select>
+                                                <div class="half-3">
+                                                    <div class="form-field">
+                                                        <select>
+                                                            <option value="may">May</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="half-3">
-                                                <div class="form-field">
-                                                    <select>
-                                                        <option value="1992">1992</option>
-                                                    </select>
+                                                <div class="half-3">
+                                                    <div class="form-field">
+                                                        <select>
+                                                            <option value="1992">1992</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="next-btn">
-                            <button type="submit">Submit</button>
-                        </div>
-                    </div>
+                            <div class="next-btn">
+                                <button type="submit">Submit</button>
+                            </div>
+                        </div> -->
 
-                    <div class="note">
-                        <p>* You must fill all blank spaces.</p>
+                        <div class="note">
+                            <p>* You must fill all blank spaces.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    
+        </form>
         
     
     </div>
-
-
-
-
     <footer class="sticky-footer">
         <div class="container">
           <div class="text-center">

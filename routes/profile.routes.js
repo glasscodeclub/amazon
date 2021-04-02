@@ -33,7 +33,10 @@ router.post("/update", middlewares.isLoggedIn, function(req,res){
         user.email = email;
         user.address = address;
         user.save();
-        res.redirect("/profile")
+        if(req.user.category == "User")
+            res.redirect("/profile")
+        else
+            res.redirect("/dashboard")
     })
 });
 

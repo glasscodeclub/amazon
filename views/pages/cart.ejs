@@ -25,17 +25,17 @@
             ></label>
           </div>
           <li><a href="/dashboard">Dashboard</a></li>
-          <li><a href="">Orders</a></li>
-          <li><a href="">Wishlist</a></li>
+          <li><a href="/order">Orders</a></li>
+          <li><a href="/wishlist">Wishlist</a></li>
           <li>
             <a href="" class="desktop-item">Page <span><i class="fas fa-chevron-down"></i></span></a>
             <input type="checkbox" id="showdrop2" />
             <label for="showdrop2" class="mobile-item">Page <span><i class="fas fa-chevron-down"></i></span></label>
             <ul class="drop-menu2">
-              <li><a href="">About</a></li>
+              <li><a href="/aboutus">About</a></li>
               <li><a href="/contactus">Contact</a></li>
-              <li><a href="">Privacy Policy</a></li>
-              <li><a href="">Terms & Conditions</a></li>
+              <li><a href="/privacypolicy">Privacy Policy</a></li>
+              <li><a href="/terms&conditions">Terms & Conditions</a></li>
             </ul>
           </li>
           <!-- icons -->
@@ -115,7 +115,10 @@
             <td>Rs <%= totalPrice %></td>
           </tr>
         </table>
-        <a href="/order/new" class="check-btn checkout btn">Checkout</a>
+        <form action="/order/checkout" method="POST">
+          <button class="check-btn checkout btn">Checkout</button>
+        </form>
+        <!-- <a href="/order/new" class="check-btn checkout btn">Checkout</a> -->
 
       </div>
     </div>
