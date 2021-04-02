@@ -103,6 +103,7 @@
               <tr>
                   <th>S.No</th>
                   <th>Order ID</th>
+                  <th>Product Name</th>
                   <th>Order Date</th>
                   <th>Total Amount</th>
                   <th>Status</th>    
@@ -112,7 +113,8 @@
               <%for(var i=0;i<orders.length;i++){%>
               <tr>
                   <td><%=i+1%></td>
-                  <td><%=orders[i]._id%></td>
+                  <td><a href="/seller/orders/<%=orders[i]._id%>"><%=orders[i]._id%></a></td>
+                  <td><%=orders[i].items.itemname%></td>
                   <td><%=orders[i].orderDate%></td>
                   <td><%=orders[i].totalPrice%></td>
                   <form action="/seller/orders/<%=orders[i]._id%>" method="POST">

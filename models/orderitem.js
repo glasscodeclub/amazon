@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var orderitemSchema = new mongoose.Schema({
     totalPrice: { type: Number, default: 0},
-    items: [{ 
+    items: { 
         item: { 
             type: mongoose.Schema.Types.ObjectId, 
             ref: 'Product'
@@ -16,7 +16,8 @@ var orderitemSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId, 
             ref: 'User'
         }
-    }],
+
+    },
     payment: {type:String, default:null},
     status: {type:String, default:null},
     orderDate: {type:String, default:null},

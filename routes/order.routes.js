@@ -1,11 +1,11 @@
 var express = require("express");
 var router = express.Router();
-var Order = require("../models/order")
 var orderLib = require("../lib/order.lib")
 var OrderItem = require("../models/orderitem")
 var orderitemLib = require("../lib/orderitem.lib")
 var cartLib = require("../lib/cart.lib");
 var middlewares = require("../middlewares/auth");
+var productLib = require("../lib/product.lib");
 
 router.get("/", middlewares.isLoggedIn, function(req,res){
     let filter={owner: req.user._id };
@@ -52,51 +52,54 @@ router.post("/checkout", middlewares.isLoggedIn, function(req,res){
             orderLib.findOne(filter, function(err, ordersplaced) {
                 if(err)
                     console.log(err)
-            var totalPrice = cart.totalPrice,
-                items = cart.items,
-                payment = "Cash On Delivery",
-                status = "Waiting for Confirmation",
-                tempOrderDate = new Date(),
-                orderDate = tempOrderDate.toLocaleDateString(),
-                tempdeliveryDate = new Date(tempOrderDate.getTime() + 172800000),
-                deliveryDate = tempdeliveryDate.toLocaleDateString(),
-                tempreturnDate = new Date(tempdeliveryDate.getTime() + 604800000),
-                returnDate = tempreturnDate.toLocaleDateString(),
-                msg = null,
-                line = req.user.address.line,
-                city = req.user.address.city,
-                country = req.user.address.country,
-                postal = req.user.address.postal,
-                firstname = req.user.firstname,
-                lastname = req.user.lastname,
-                email = req.user.email,
-                phone = req.user.phone,
-                address = {line, city, country, postal, firstname, lastname, email, phone},
-                order = {totalPrice, items, payment, status, orderDate, deliveryDate, returnDate, msg, address};
-            var id;
-            OrderItem.create(order, function(err, neworder){
-                if(err)
-                    console.log(err);
-                id = neworder._id;
-                if(ordersplaced != null){
-                    ordersplaced.orders.push(id);
-                    ordersplaced.save(); 
-                }else{
-                    var owner = req.user._id,
-                        orders = [];
-                        newuser = {owner, orders}
-                    Order.create(newuser, function(err, getorder){
-                        if(err)
-                            console.log(err)
-                        getorder.orders.push(id)
-                        getorder.save()
+                cart.items.forEach(function(item){
+                    let pfilter = {_id: item.item}
+
+                    productLib.findOne(pfilter, function(err, product){
+                        product.stock = product.stock - item.quantity;
+                        product.save();
                     })
+                    var totalPrice = item.price,
+                        items = item,
+                        payment = "Cash On Delivery",
+                        status = "Waiting for Confirmation",
+                        tempOrderDate = new Date(),
+                        orderDate = tempOrderDate.toLocaleDateString(),
+                        tempdeliveryDate = new Date(tempOrderDate.getTime() + 172800000),
+                        deliveryDate = tempdeliveryDate.toLocaleDateString(),
+                        tempreturnDate = new Date(tempdeliveryDate.getTime() + 604800000),
+                        returnDate = tempreturnDate.toLocaleDateString(),
+                        msg = null,
+                        line = req.user.address.line,
+                        city = req.user.address.city,
+                        country = req.user.address.country,
+                        postal = req.user.address.postal,
+                        firstname = req.user.firstname,
+                        lastname = req.user.lastname,
+                        email = req.user.email,
+                        phone = req.user.phone,
+                        address = {line, city, country, postal, firstname, lastname, email, phone},
+                        order = {totalPrice, items, payment, status, orderDate, deliveryDate, returnDate, msg, address};
+                    var id;
+                    OrderItem.create(order, function(err, neworder){
+                        if(err)
+                            console.log(err);
+                        id = neworder._id;
+                        ordersplaced.orders.push(id);
+                    })
+                })
+                function myFunction() {
+                    setTimeout(orderFunc, 1000);
                 }
-            }) 
-            cart.items = [];
-            cart.totalPrice = 0;
-            cart.save();
-            res.redirect("/order/payment");
+                
+                function orderFunc() {
+                    ordersplaced.save(); 
+                }
+                myFunction(); 
+                cart.items = [];
+                cart.totalPrice = 0;
+                cart.save();
+                res.redirect("/order/payment");
         })
     });
 });
@@ -107,7 +110,7 @@ router.get("/viewdetails/:order_id",middlewares.isLoggedIn, function(req,res){
     orderitemLib.findOne(filter, function(err, foundorder) {
         if(err)
             console.log(err);
-            res.render("./pages/viewdetails",{order:foundorder});
+        res.render("./pages/viewdetails",{order:foundorder});
     });
 })
 
@@ -192,41 +195,3 @@ router.post("/return/:order_id", middlewares.isLoggedIn, function(req,res){
 
 
 module.exports = router;
-
-// router.get("/", middlewares.isLoggedIn, function(req,res){
-//     let filter={owner: req.user._id };
-//     orderLib.findOne(filter, function(err, ordersplaced) {
-//         if(err)
-//             console.log(err);
-//         console.log(ordersplaced)
-//         let orders = [];
-//         if(ordersplaced != null){
-//             const functionA = () => {
-//                 orders = orders;
-//             }
-//             const getorders = () => {
-//                 return new Promise((resolve, reject) =>{
-//                     setTimeout(() => {
-//                         resolve(functionA())
-//                     }, 1000)
-//                 })
-//             };
-
-//             const callMe = async() => {
-//                 ordersplaced.orders.forEach(function(id){
-//                     let ofilter = {_id: id}
-//                     orderitemLib.findOne(ofilter, function(err, foundorder){
-//                         orders.push(foundorder);
-//                     })
-//                 })
-//                 let r1 = await getorders(); 
-//                 console.log(orders)
-//                 res.render("./pages/order", {orders: orders}); 
-//             }
-//             callMe();
-//         }else if(ordersplaced == null){
-//             console.log(orders)
-//             res.render("./pages/order", {orders: []}); 
-//         }
-//     });
-// });
