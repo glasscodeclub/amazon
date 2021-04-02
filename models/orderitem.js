@@ -3,14 +3,19 @@ var mongoose = require('mongoose');
 var orderitemSchema = new mongoose.Schema({
     totalPrice: { type: Number, default: 0},
     items: [{ 
-    item: { 
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: 'Product'
-    },
+        item: { 
+            type: mongoose.Schema.Types.ObjectId, 
+            ref: 'Product'
+        },
         quantity: { type: Number, default: 0},
         price: { type: Number, default: 0},
         image: {type:String, default:null},
-        itemname: {type:String, default:null}
+        itemname: {type:String, default:null},
+        discount:{type: Number, default: 0},
+        seller:{      
+            type: mongoose.Schema.Types.ObjectId, 
+            ref: 'User'
+        }
     }],
     payment: {type:String, default:null},
     status: {type:String, default:null},

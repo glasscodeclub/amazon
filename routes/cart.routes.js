@@ -28,8 +28,9 @@ router.post("/add/:id",middlewares.isLoggedIn, function(req,res){
         image = req.body.image;
         itemname = req.body.name;
         discount = req.body.discount;
+        seller = req.body.seller;
         no = 0;
-    var cartitem = {item, price, quantity, image, itemname, discount};
+    var cartitem = {item, price, quantity, image, itemname, discount, seller};
     var owner = req.user._id;
     var totalPrice = 0;
     var items = [cartitem];

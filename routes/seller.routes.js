@@ -4,9 +4,21 @@ var categoryLib = require("../lib/category.lib");
 var middlewares = require("../middlewares/auth");
 const Product = require("../models/product");
 var productLib = require("../lib/product.lib");
+var orderitemLib = require("../lib/orderitem.lib")
 
-router.get("/profile",middlewares.isLoggedIn, function(req,res){
-    res.render("./pages/sellerprofile");
+router.get("/orders",middlewares.isLoggedIn, function(req,res){
+    let filter = {};
+    let sellerorders = [];
+    orderitemLib.findbyId(filter, function(err, orders){
+        orders.forEach(function(order){
+            order.items.forEach(function(getorder){
+                if(getorder.seller == req.user._id.toString()){
+                    sellerorders.push(order);
+                }
+            })
+        })
+        res.render("./pages/sellerdash",{orders:sellerorders});
+    })
 });
 
 router.get("/addproduct",middlewares.isLoggedIn, function(req,res){
@@ -65,6 +77,27 @@ router.post("/products/:product_id",middlewares.isLoggedIn, function(req,res){
             console.log(err);
         }else{
             res.redirect("/seller/products");
+        }
+    })
+});
+
+router.post("/orders/:order_id",middlewares.isLoggedIn, function(req,res){
+    let status = req.body.status;
+    let filter = {_id: req.params.order_id}
+    orderitemLib.findOne(filter,function(err, order){
+        if(err){
+            console.log(err);
+        }else{
+            if(status == "Delivered"){
+                order.deliveryDate = new Date().toLocaleDateString();
+            }
+            else if(status == "Cancelled"){
+                order.deliveryDate = new Date().toLocaleDateString();
+                order.msg = "Seller couldnot deliver. Sorry for inconvenience"
+            }
+            order.status = status;
+            order.save();
+            res.redirect("/seller/orders");
         }
     })
 });

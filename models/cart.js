@@ -15,6 +15,11 @@ var CartSchema = new mongoose.Schema({
     price: { type: Number, default: 0},
     image: String,
     itemname: String,
+    discount:Number,
+    seller:{
+      type: mongoose.Schema.Types.ObjectId, 
+      ref: 'User'
+    },
   }]
 });
 

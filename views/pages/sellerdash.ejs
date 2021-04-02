@@ -101,28 +101,35 @@
         <table id="example" class="table table-striped table-bordered" style="width:100%">
           <thead>
               <tr>
-                  <th>Name</th>
+                  <th>S.No</th>
                   <th>Order ID</th>
                   <th>Order Date</th>
                   <th>Total Amount</th>
-                  <th>Status</th>
-                  
-                  
-                  
+                  <th>Status</th>    
               </tr>
           </thead>
           <tbody>
+              <%for(var i=0;i<orders.length;i++){%>
               <tr>
-                  <td>Tiger Nixon</td>
-                  <td>#6688593</td>
-                  <td>22/3/2021</td>
-                  <td>61</td>
-                  <td> <select id="category" name="category" >
-                    <option value="1" >Delivered</option>
-                    <option value="2" selected>On the way</option>
-                    <option value="3">Placed</option>
-                  </select>  <a class="ml-4"><i class="fa fa-pencil" aria-hidden="true"></i></a> </td>
+                  <td><%=i+1%></td>
+                  <td><%=orders[i]._id%></td>
+                  <td><%=orders[i].orderDate%></td>
+                  <td><%=orders[i].totalPrice%></td>
+                  <form action="/seller/orders/<%=orders[i]._id%>" method="POST">
+                    <td> 
+                      <select id="status" name="status" >
+                        <option value="<%=orders[i].status%>" selected><%=orders[i].status%></option>
+                        <option value="Placed" >Placed</option>
+                        <option value="On The Way" >On The Way</option>
+                        <option value="Delivered" >Delivered</option>
+                        <option value="Cancelled" >Cancel</option>
+                        
+                      </select>  
+                      <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                    </td>
+                  </form>
               </tr>
+              <%}%>
           </tbody>
           <!-- <tfoot>
               <tr>
