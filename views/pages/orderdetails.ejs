@@ -42,13 +42,13 @@
 
                                     <dl class="row">
                                         <dd class="col-sm-4">First Name :</dd>
-                                        <dt class="col-sm-8">Naveen</dt>
+                                        <dt class="col-sm-8"><%=order.address.firstname%></dt>
                                         <dd class="col-sm-4">Last Name :</dd>
-                                        <dt class="col-sm-8">Yadav</dt>
+                                        <dt class="col-sm-8"><%=order.address.firstname%></dt>
                                         <dd class="col-sm-4">E-mail :</dd>
-                                        <dt class="col-sm-8">greatguy494@gmail.com</dt>
+                                        <dt class="col-sm-8"><%=order.address.email%></dt>
                                         <dd class="col-sm-4">Phone no :</dd>
-                                        <dt class="col-sm-8">1234567890</dt>
+                                        <dt class="col-sm-8"><%=order.address.phone%></dt>
                                     </dl>
 
 								</form>
@@ -68,13 +68,13 @@
 
                                     <dl class="row">
                                         <dd class="col-sm-4">Address :</dd>
-                                        <dt class="col-sm-8">R-z 9 X block New Roshanpura Najafgarh</dt>
+                                        <dt class="col-sm-8"><%=order.address.line%></dt>
                                         <dd class="col-sm-4">State :</dd>
-                                        <dt class="col-sm-8">Delhi</dt>
+                                        <dt class="col-sm-8"><%=order.address.city%></dt>
                                         <dd class="col-sm-4">Country :</dd>
-                                        <dt class="col-sm-8">India</dt>
+                                        <dt class="col-sm-8"><%=order.address.country%></dt>
                                         <dd class="col-sm-4">Postal Code :</dd>
-                                        <dt class="col-sm-8">123344</dt>
+                                        <dt class="col-sm-8"><%=order.address.postal%></dt>
                                     </dl>
 
 								</form>
@@ -94,29 +94,29 @@
 						</div>
 						<div class="card-body">
                             <dl class="row">
-                            <img class="product-img" src="http://cdn.mos.cms.futurecdn.net/6t8Zh249QiFmVnkQdCCtHK.jpg" alt="product" />
+                            <img class="product-img" src="<%=order.items.image%>" alt="product" />
                             </dl>
 
 							<dl class="row">
 								<dd class="col-sm-4">Product Name :</dd>
-								<dt class="col-sm-8">Laptop</dt>
+								<dt class="col-sm-8"><%=order.items.itemname%></dt>
                                 <dd class="col-sm-4">Order ID :</dd>
-								<dt class="col-sm-8">1525293</dt>
+								<dt class="col-sm-8"><%=order._id%></dt>
 								<dd class="col-sm-4">Quantity :</dd>
-								<dt class="col-sm-8">1</dt>
+								<dt class="col-sm-8"><%=order.items.itemname%></dt>
                                 <dd class="col-sm-4">Total Price :</dd>
-								<dt class="col-sm-8">10000</dt>
+								<dt class="col-sm-8"><%=order.totalPrice%></dt>
 							</dl>
 							<dl class="row">
 								
 							</dl>
 							<dl class="row">
 								<dd class="col-sm-4">Placed on :</dd>
-								<dt class="col-sm-8">23/April/2020</dt>
+								<dt class="col-sm-8"><%=order.orderDate%></dt>
 								<dd class="col-sm-4">Payment Method :</dd>
-								<dt class="col-sm-8">Cash on Dleivery</dt>
+								<dt class="col-sm-8"><%=order.payment%></dt>
                                 <dd class="col-sm-4">Order Status :</dd>
-								<dt class="col-sm-8">Placed</dt>
+								<dt class="col-sm-8"><%=order.status%></dt>
 							</dl>
 							
 							

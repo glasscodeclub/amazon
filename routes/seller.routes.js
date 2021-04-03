@@ -23,6 +23,7 @@ router.get("/orders",middlewares.isLoggedIn, function(req,res){
 router.get("/orders/:order_id",middlewares.isLoggedIn, function(req,res){
     let filter = {_id:req.params.order_id};
     orderitemLib.findOne(filter, function(err, order){
+        // console.log(order)
         res.render("./pages/orderdetails",{order:order});
     })
 });
