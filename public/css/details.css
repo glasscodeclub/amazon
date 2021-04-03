@@ -28,7 +28,7 @@
   }
 }
 .d-flex{
-  display: block;
+  display: block; 
   flex-direction: row;
   background: #f6f6f6;
   border-radius: 0 0 5px 5px;
