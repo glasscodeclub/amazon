@@ -76,10 +76,11 @@ Contributions are what make the open source community such an amazing place to b
 <!-- LICENSE -->
 ## License
 
-open source software
+copyright with glasscodeclub.com
 
 
 
 <!-- CONTACT -->
 ## Contact
 email GCC on : glasscodeclub@gmail.com
+               support@glasscode.com
